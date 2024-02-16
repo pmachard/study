@@ -3,19 +3,20 @@ class Cube : ICube
   public Cube()
   {
     Size = 0.0;
-    coordSystem = new CoordSytem();
+    LocalCoordSystem = new CoordSytem();
   }
   
   public ICube(ICoordSystem coordSystem, double size)
   {
+    Size = size;
+    LocalCoordSystem = coordSytem;
   }
 
   public double Size(get;set);
-  public ICoordSystem coordSystem {get; set;};
+  public ICoordSystem LocalCoordSystem {get; set;};
   
   public RunTranlation(ICoord3D v)
   {
       coordSystem.RunTranslation(v);
   }
-
 }
