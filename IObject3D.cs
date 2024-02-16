@@ -1,6 +1,6 @@
 interface IObject3D : ITranslatable
 {
-    public ICoordSystem coordSystem {get; set;};
+    public ICoordSystem LocalCoordSystem {get; set;};
 
 }
   
