@@ -2,7 +2,7 @@ class Cube : ICube
 {
   public Cube()
   {
-    Size = 0.0;
+    Size = 1.0;
     LocalCoordSystem = new CoordSytem();
   }
   
