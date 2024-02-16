@@ -44,4 +44,8 @@ interface ICoord3d
     public double operator_scal(ICoord3D b);
     // Produit vectoriel entre deux vecteur
     public ICoord3D operator_produit_vect(ICoord3D b);
+
+    // Swap des valeurs (x=z,y=y,z=x) 
+    public ICoord3D swap();
+    
 }
