@@ -74,4 +74,19 @@ class Coord3D : ICoord3d
             this.Z / b
         );    
     }
+
+    public double operator_scal(ICoord3D b)
+    {
+        return this.X / b.X + this.Y / b.Y + this.Z / b.Z;    
+    }
+
+    public ICoord3d operator_produit_vect(ICoord3D b)
+    {
+        u2v3−u3v2,u3v1−u1v3,u1v2−u2v1
+        return new Coord3D (
+            this.Y*b.Z - this.Z*b.Y,
+            this.Z*b.X - this.X*b.Z,
+            this.X*b.Y - this.Y*b.X
+        );    
+    }
 };
