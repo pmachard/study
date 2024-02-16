@@ -54,4 +54,10 @@ class Coord3D : ICoord3d
     {
         return new Coord3D ( this.Y*b.Z - this.Z*b.Y, this.Z*b.X - this.X*b.Z, this.X*b.Y - this.Y*b.X );    
     }
+    
+    public ICoord3D swap()
+    {
+        return new Coord3D( this.Z, this.Y, this.X);
+    }
+
 };
