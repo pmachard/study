@@ -14,10 +14,10 @@ interface ICoord3d
     static public ICoord3 operator * (double m) { return a.operator_mult(m); }
     static public ICoord3 operator / (ICoord3D a, ICoord3D b) { return a.operator_div(b); }
 
-    public operator_add(ICoord3D b);
-    static public operator_supp(ICoord3D a);
-    public operator_supp(ICoord3D b);
-    public operator_mult(ICoord3D b);
-    public operator_mult(double b);
-    public operator_div(ICoord3D b);
+    public ICoord3D operator_add(ICoord3D b);
+    static public ICoord3D operator_supp(ICoord3D a);
+    public ICoord3D operator_supp(ICoord3D b);
+    public ICoord3D operator_mult(ICoord3D b);
+    public ICoord3D operator_mult(double b);
+    public ICoord3D operator_div(ICoord3D b);
 }
