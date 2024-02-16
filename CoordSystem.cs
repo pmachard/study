@@ -1,4 +1,4 @@
-class CoordSystem : ICoordSystem, ITranslatable
+class CoordSystem : ICoordSystem
 {
     public Coord3D()
     {
