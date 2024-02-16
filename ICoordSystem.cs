@@ -1,4 +1,4 @@
-interface ICoordSystem
+interface ICoordSystem : ITranslatable
 {
     // Création d'un repère par default
     public ICoord3D();
