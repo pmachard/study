@@ -7,6 +7,4 @@ interface ICoordSystem
     public ICoord3d I {get; set;};
     public ICoord3d J {get; set;};
     public ICoord3d K {get; set;};
-
-  
 }
