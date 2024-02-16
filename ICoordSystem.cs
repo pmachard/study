@@ -1,4 +1,4 @@
-interface ICoordSystem : ICoord3D
+interface ICoordSystem
 {
     public ICoord3D();
     public ICoord3D(ICoord3D o,ICoord3D i,ICoord3D j,ICoord3D k);
