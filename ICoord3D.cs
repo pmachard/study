@@ -20,4 +20,5 @@ interface ICoord3d
     public ICoord3D operator_mult(ICoord3D b);
     public ICoord3D operator_mult(double b);
     public ICoord3D operator_div(ICoord3D b);
+    public ICoord3D operator_div(double b);
 }
