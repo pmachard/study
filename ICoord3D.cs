@@ -5,9 +5,9 @@ interface ICoord3d
     // Création d'une coordonnées avec des valeurs x,y et z
     public ICoord3D(double x, double y , double z);    
     
-    public double X { get; set; }
-    public double Y { get; set; }
-    public double Z { get; set; }
+    public double X { get; set; };
+    public double Y { get; set; };
+    public double Z { get; set; };
 
     // Operateur addition entre deux coordonnées
     static public ICoord3 operator + (ICoord3D a, ICoord3D b) { return a.operator_add(b); }
