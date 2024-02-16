@@ -11,5 +11,9 @@ class SetEdge : ISetEdge
     {
         Coords.Add(Pt);
     }
-  
+
+    public IEnumerator<ICoord3D> GetCoord()
+    {
+        foreach (ICoord3D coord in Coords) { yield return coord; }
+    }
 };
