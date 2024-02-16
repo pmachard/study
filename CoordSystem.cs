@@ -1,4 +1,4 @@
-class CoordSystem : ICoordSystem
+class CoordSystem : ICoordSystem, ITranslatable
 {
     public Coord3D()
     {
@@ -21,5 +21,8 @@ class CoordSystem : ICoordSystem
     public ICoord3d J {get; set;};
     public ICoord3d K {get; set;};
 
-  
+    public RunTranlation(ICoord3D v)
+    {
+        O = O + v;
+    }
 }
