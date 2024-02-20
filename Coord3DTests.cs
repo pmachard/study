@@ -20,5 +20,31 @@ namespace MathTests
           Assert.AreEqual(c.Y, 2.0);
           Assert.AreEqual(c.Z, 3.0);
         }
+
+        [TestMethod]
+        public void TestAdd()
+        {
+          Coord3D c(1.0,2.0,3.0);
+          Coord3D c2(0.5,0.6,0.7);
+
+          Coord3D c3 = c1 + c2;
+
+          Assert.AreEqual(c3.X, 1.5);
+          Assert.AreEqual(c3.Y, 2.6);
+          Assert.AreEqual(c3.Z, 3.7);
+        }
+        
+        [TestMethod]
+        public void TestSupp()
+        {
+          Coord3D c(1.0,2.0,3.0);
+          Coord3D c2(0.5,0.6,0.7);
+
+          Coord3D c3 = c1 - c2;
+
+          Assert.AreEqual(c3.X, 0.5);
+          Assert.AreEqual(c3.Y, 1.4);
+          Assert.AreEqual(c3.Z, 2.3);
+        }
   }
 }
