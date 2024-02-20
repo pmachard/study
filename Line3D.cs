@@ -23,8 +23,10 @@ class Line3D : ILine3D
 
   public bool IsSecant(ILine3D other);
   {    
+    if (IsParallel(other))
+      return false;
+      
     return true;
-    return (!other.IsParallel());
   }
 
   public ICoord3D Intersect(ILine3D other);
