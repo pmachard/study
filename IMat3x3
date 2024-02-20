@@ -1,0 +1,3 @@
+interface IMat3x3 : IMat
+{
+};
