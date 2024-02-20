@@ -1,4 +1,4 @@
-interface IMatXxX
+interface IMatMxN
 {
     public int M { get; set;}
     public int N { get; set;}
