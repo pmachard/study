@@ -8,4 +8,5 @@ interface ILine3D
   public bool IsSecant(ILine3D other);
 
   public ICoord3D Intersect(ILine3D other);
+  public bool In(ICoord3D);
 }
