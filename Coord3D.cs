@@ -67,6 +67,7 @@ class Coord3D : ICoord3d
         double (other.X != 0.0) ? tx = X / other.X : 0.0;
         double (other.Y != 0.0) ? ty = Y / other.Y : 0.0;
         double (other.Z != 0.0) ? tz = Z / other.Z : 0.0;
+        
         if (tx == ty) && (ty == tz )) && ( tz == 0.0)
             return true;
         if (tx == 0.0)
