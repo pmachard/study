@@ -59,7 +59,4 @@ class Coord3D : ICoord3d
     {
         return new Coord3D( this.Z, this.Y, this.X);
     }
-
-    // exemple de commentaire
-
 };
