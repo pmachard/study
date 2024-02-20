@@ -46,5 +46,29 @@ namespace MathTests
           Assert.AreEqual(c3.Y, 1.4);
           Assert.AreEqual(c3.Z, 2.3);
         }
+        
+        [TestMethod]
+        public void TestSupp()
+        {
+          Coord3D c(1.0,2.0,3.0);
+
+          Coord3D c3 = -c1;
+
+          Assert.AreEqual(c3.X, -1.0);
+          Assert.AreEqual(c3.Y, -2.0);
+          Assert.AreEqual(c3.Z, -3.0);
+        }
+        
+        [TestMethod]
+        public void TestMult()
+        {
+          Coord3D c(1.0,2.0,3.0);
+          double coef = 2.0;
+          Coord3D c3 = c1 * coef;
+
+          Assert.AreEqual(c3.X, 2.0);
+          Assert.AreEqual(c3.Y, 4.0);
+          Assert.AreEqual(c3.Z, 6.0);
+        }
   }
 }
