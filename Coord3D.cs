@@ -75,12 +75,6 @@ class Coord3D : ICoord3d
             return (tx == tz) ;
         if (tz == 0.0)
             return (tx == ty) ;
-        if (tx == ty) && (tx = 0.0)
-            return true;            
-        if (tx == tz) && (tz = 0.0)
-            return true;
-        if (ty == tz) && (tz = 0.0)
-            return true;
         
         return (tx == ty) && (tx == tz) ;
     }
