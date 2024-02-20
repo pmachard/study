@@ -37,4 +37,11 @@ class Line3D : ILine3D
     
     return result;
   }
+  
+  public bool In(ICoord3D pt)
+  {
+    ICoord3D delta = pt - O;
+    return V.IsProportional(delta);
+  }
+
 }
