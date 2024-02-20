@@ -23,7 +23,7 @@ class Line3D : ILine3D
 
   public bool IsSecant(ILine3D other);
   {    
-    if (IsParallel(other))
+    if (this.IsParallel(other))
       return false;
       
     return true;
