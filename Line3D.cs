@@ -27,8 +27,10 @@ class Line3D : ILine3D
 
   public ICoord3D Intersect(ILine3D other);
   {  
-    if ()
+    if (!IsSecant(other))
+      return null;
+      ICoord3D result = new Coord3D();
     
-    return null;
+    return result;
   }
 }
