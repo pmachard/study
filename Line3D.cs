@@ -17,6 +17,7 @@ class Line3D : ILine3D
   public bool IsPerpendicular(ILine3D other)
   {
     produitScalaire = V ^ other.V;
+    // cela ne sufffit passss
     return produitScalaire == 0.0;
   }
 
