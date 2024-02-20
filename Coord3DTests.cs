@@ -147,5 +147,13 @@ namespace MathTests
           Coord3D c2(2.0,4.0,8.0);
           Assert.AreEqual(c1.IsProportional(c2),true);
         }
+        
+        [TestMethod]
+        public void TestIsProportionalNull()
+        {
+          Coord3D c1(1.0,2.0,4.0);
+          Coord3D c2(4.0,2.0,1.0);
+          Assert.AreEqual(c1.swap(),c2);
+        }
   }
 }
