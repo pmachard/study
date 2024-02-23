@@ -1,0 +1,5 @@
+C:\Users\PascalMACHARD\PycharmProjects\study\math\ClassLibraryMath\obj\Debug\net8.0\ClassLibraryMath.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PascalMACHARD\PycharmProjects\study\math\ClassLibraryMath\obj\Debug\net8.0\ClassLibraryMath.AssemblyInfoInputs.cache
+C:\Users\PascalMACHARD\PycharmProjects\study\math\ClassLibraryMath\obj\Debug\net8.0\ClassLibraryMath.AssemblyInfo.cs
+C:\Users\PascalMACHARD\PycharmProjects\study\math\ClassLibraryMath\obj\Debug\net8.0\ClassLibraryMath.csproj.CoreCompileInputs.cache
+C:\Users\PascalMACHARD\PycharmProjects\study\math\ClassLibraryMath\obj\Debug\net8.0\ClassLibraryMath.sourcelink.json
