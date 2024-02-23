@@ -1,4 +1,4 @@
-class Mat3x3 : IMatCxL
+class Mat3x3 : IMat
 {
     public int M { get() {return 3};}
     public int N { get() {return 3};}
