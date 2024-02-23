@@ -122,33 +122,9 @@ namespace MathTests
           ICoord3D c2 = new Coord3D(0.0,0.0,0.0);
           Assert.AreEqual(c1.IsProportional(c2),true);
         }
-        
+               
         [TestMethod]
         public void TestIsProportionalExp1()
-        {
-          Coord3D c1 = new Coord3D(1.0,1.0,0.0);
-          Coord3D c2 = new Coord3D(0.0,2.0,0.0);
-          Assert.AreEqual(c1.IsProportional(c2),true);
-        }
-        
-        [TestMethod]
-        public void TestIsProportionalExp2()
-        {
-          Coord3D c1 = new Coord3D(1.0,0.0,1.0);
-          Coord3D c2 = new Coord3D(0.0,0.0,2.0);
-          Assert.AreEqual(c1.IsProportional(c2),true);
-        }
-        
-        [TestMethod]
-        public void TestIsProportionalExp3()
-        {
-          Coord3D c1 = new Coord3D(1.0,1.0,1.0);
-          Coord3D c2 = new Coord3D(0.0,2.0,2.0);
-          Assert.AreEqual(c1.IsProportional(c2),true);
-        }
-        
-        [TestMethod]
-        public void TestIsProportionalExp4()
         {
           Coord3D c1 = new Coord3D(1.0,2.0,4.0);
           Coord3D c2 = new Coord3D(2.0,4.0,8.0);
@@ -156,7 +132,7 @@ namespace MathTests
         }
         
         [TestMethod]
-        public void TestIsProportionalExp5()
+        public void TestIsProportionalExp2()
         {
           Coord3D c1 = new Coord3D(1.0,2.0,4.0);
           Coord3D c2 = new Coord3D(3.0,3.0,3.0);
