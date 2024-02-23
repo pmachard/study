@@ -1,3 +1,9 @@
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
+using System;
+using math;
+
 namespace MathTests
 {
     [TestClass]
