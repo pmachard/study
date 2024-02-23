@@ -1,16 +1,15 @@
-interface ICoordSystem : ITranslatable
+namespace Math.@interface
 {
-    // Création d'un repère par default
-    public ICoord3D();
-    // Création d'un repère o i j k
-    public ICoord3D(ICoord3D o,ICoord3D i,ICoord3D j,ICoord3D k);
+    interface ICoordSystem
+    {
 
-    // Centre du repère
-    public ICoord3d O {get; set;};
-    // Vecteur X
-    public ICoord3d I {get; set;};
-    // Vecteur Y
-    public ICoord3d J {get; set;};
-    // Vecteur Z
-    public ICoord3d K {get; set;};
+        // Centre du repère
+        public ICoord3D O { get; set; }
+        // Vecteur X
+        public ICoord3D I { get; set; }
+        // Vecteur Y
+        public ICoord3D J { get; set; }
+        // Vecteur Z
+        public ICoord3D K { get; set; }
+    }
 }

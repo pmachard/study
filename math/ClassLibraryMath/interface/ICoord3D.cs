@@ -1,5 +1,4 @@
-
-namespace math
+namespace Math.@interface
 {
     interface ICoord3D
     {
@@ -16,7 +15,7 @@ namespace math
         // Operateur de multiplication entre deux coordonnées
         static public ICoord3D operator *(ICoord3D a, ICoord3D b) { return a.operator_mult(b); }
         // Operateur de multiplication entre des coordonnées et un double
-        static public ICoord3D operator *(double m) { return a.operator_mult(m); }
+        static public ICoord3D operator *(ICoord3D a, double m) { return a.operator_mult(m); }
         // Operateur de division entre deux coordonnées
         static public ICoord3D operator /(ICoord3D a, ICoord3D b) { return a.operator_div(b); }
         // Operateur produit scalaire entre deux coordonnées
