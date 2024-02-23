@@ -6,4 +6,5 @@ interface ICube : IObject3D
   public ICube(ICoordSystem coordSystem, double size);
   // size du cube
   public double Size(get;set);
+  // exemple de commit
 }
