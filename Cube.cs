@@ -2,18 +2,18 @@ class Cube : ICube
 {
   public Cube()
   {
-    Size = 1.0;
     LocalCoordSystem = new CoordSytem();
+    Size = 1.0;
   }
   
   public ICube(ICoordSystem coordSystem, double size)
   {
-    Size = size;
     LocalCoordSystem = coordSytem;
+    Size = size;
   }
 
-  public double Size(get;set);
   public ICoordSystem LocalCoordSystem {get; set;};
+  public double Size(get;set);
   
   public RunTranlation(ICoord3D v)
   {
