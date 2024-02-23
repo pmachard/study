@@ -110,3 +110,6 @@ C:\Users\PascalMACHARD\PycharmProjects\study\TestProject\obj\Debug\net8.0\refint
 C:\Users\PascalMACHARD\PycharmProjects\study\TestProject\obj\Debug\net8.0\TestProject.pdb
 C:\Users\PascalMACHARD\PycharmProjects\study\TestProject\obj\Debug\net8.0\TestProject.genruntimeconfig.cache
 C:\Users\PascalMACHARD\PycharmProjects\study\TestProject\obj\Debug\net8.0\ref\TestProject.dll
+C:\Users\PascalMACHARD\PycharmProjects\study\TestProject\bin\Debug\net8.0\CoverletSourceRootsMapping_TestProject
+C:\Users\PascalMACHARD\PycharmProjects\study\TestProject\bin\Debug\net8.0\Math.dll
+C:\Users\PascalMACHARD\PycharmProjects\study\TestProject\bin\Debug\net8.0\Math.pdb

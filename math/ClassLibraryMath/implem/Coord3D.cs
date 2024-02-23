@@ -3,7 +3,7 @@ using Math.@interface;
 namespace Math.implem
 { 
 
-    class Coord3D : ICoord3D
+    public class Coord3D : ICoord3D
     {
         public Coord3D()
         {
@@ -30,6 +30,11 @@ namespace Math.implem
         public ICoord3D operator_add(ICoord3D b)
         {
             return new Coord3D(X + b.X, Y + b.Y, Z + b.Z);
+        }
+
+        public ICoord3D operator_supp(ICoord3D b)
+        {
+            return new Coord3D(X - b.X, Y - b.Y, Z - b.Z);
         }
 
         public ICoord3D operator_supp()
@@ -104,9 +109,5 @@ namespace Math.implem
                                X * b.Y - Y * b.X);
         }
 
-        public ICoord3D operator_supp(ICoord3D b)
-        {
-            return new Coord3D(-b.X, -b.Y, -b.Z);
-        }
     };
 }
