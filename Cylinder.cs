@@ -2,15 +2,15 @@ class Cylinder : ICylinder
 {
   public Cylinder()
   {
+    LocalCoordSystem = new ICoordSytem();
     Radius = 1.0;
     Height = 1.0;
-    LocalCoordSystem = new ICoordSytem();
   }
   public ICylinder(ICoordSystem localCoordSystem, double radius, double height)
   {
+    LocalCoordSystem = localCoordSystem;
     Radius = radius;
     Height = height;
-    LocalCoordSystem = localCoordSystem;
   }
   
   public double Radius {get;set;}
