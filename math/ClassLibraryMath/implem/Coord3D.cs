@@ -23,16 +23,11 @@ namespace math {
             return new Coord3D(this.X + b.X, this.Y + b.Y, this.Z + b.Z);
         }
 
-        static public ICoord3D operator_supp(ICoord3D a)
+        public ICoord3D operator_supp()
         {
-            return new Coord3D(this.X - b.X, this.Y - b.Y, this.Z - b.Z);
+            return new Coord3D(-this.X, -this.Y, -this.Z);
         }
-
-        public ICoord3D operator_supp(ICoord3D b)
-        {
-            return new Coord3D(-b.X, -b.Y, -b.Z);
-        }
-
+        
         public ICoord3D operator_mult(ICoord3D b)
         {
             return new Coord3D(this.X * b.X, this.Y * b.Y, this.Z * b.Z);
@@ -58,25 +53,25 @@ namespace math {
             return this.X / b.X + this.Y / b.Y + this.Z / b.Z;
         }
 
-        public ICoord3d operator_produit_vect(ICoord3D b)
+        public ICoord3D operator_produit_vect(ICoord3D b)
         {
             return new Coord3D(this.Y * b.Z - this.Z * b.Y, this.Z * b.X - this.X * b.Z, this.X * b.Y - this.Y * b.X);
         }
 
-        public bool IsProportional(other)
+        public bool IsProportional(ICoord3D other)
         {
-            if (other.X == 0.0) && (X !== 0)
+            if ((other.X == 0.0) && (X != 0))
                 return false;
-            if (other.Y == 0.0) && (Y !== 0)
+            if ((other.Y == 0.0) && (Y != 0))
                 return false;
-            if (other.Z == 0.0) && (Z !== 0)
+            if ((other.Z == 0.0) && (Z != 0))
                 return false;
 
-            double(other.X != 0.0) ? tx = X / other.X : 0.0;
-            double(other.Y != 0.0) ? ty = Y / other.Y : 0.0;
-            double(other.Z != 0.0) ? tz = Z / other.Z : 0.0;
+            double tx = other.X != 0.0 ? X / other.X : 0.0;
+            double ty = other.Y != 0.0 ? Y / other.Y : 0.0;
+            double tz = other.Z != 0.0 ? Z / other.Z : 0.0;
 
-            if (tx == ty) && (ty == tz)) && (tz == 0.0)
+            if ((tx == ty) && (ty == tz) && (tz == 0.0))
                 return true;
             if (tx == 0.0)
                 return (ty == tz);
@@ -93,9 +88,11 @@ namespace math {
             return new Coord3D(this.Z, this.Y, this.X);
         }
 
-        ICoord3D ICoord3d.operator_produit_vect(ICoord3D b)
+        ICoord3D ICoord3D.operator_produit_vect(ICoord3D b)
         {
-            throw new NotImplementedException();
+            return new Coord3D(this.Y * b.Z - this.Z * b.Y,
+                               this.Z * b.X - this.X * b.Z,
+                               this.X * b.Y - this.Y * b.X);
         }
     };
 }

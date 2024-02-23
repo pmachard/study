@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PascalMACHARD\\PycharmProjects\\study\\math\\ClassLibraryMath\\ClassLibraryMath.csproj",
-      "projectName": "ClassLibraryMath",
-      "projectPath": "C:\\Users\\PascalMACHARD\\PycharmProjects\\study\\math\\ClassLibraryMath\\ClassLibraryMath.csproj",
+      "projectUniqueName": "C:\\Users\\PascalMACHARD\\PycharmProjects\\study\\math\\ClassLibraryMath\\Math.csproj",
+      "projectName": "Math",
+      "projectPath": "C:\\Users\\PascalMACHARD\\PycharmProjects\\study\\math\\ClassLibraryMath\\Math.csproj",
       "packagesPath": "C:\\Users\\PascalMACHARD\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\PascalMACHARD\\PycharmProjects\\study\\math\\ClassLibraryMath\\obj\\",
       "projectStyle": "PackageReference",
