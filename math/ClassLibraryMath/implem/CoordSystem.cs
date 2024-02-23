@@ -2,7 +2,7 @@ using Math.@interface;
 
 namespace Math.implem
 {
-    class CoordSystem : ICoordSystem
+    public class CoordSystem : ICoordSystem
     {
         public CoordSystem()
         {

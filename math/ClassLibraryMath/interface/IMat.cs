@@ -1,6 +1,6 @@
 namespace Math.@interface
 {
-    interface IMat
+    public interface IMat
     {
         public int N { get; set; }
         public int M { get; set; }
@@ -30,6 +30,9 @@ namespace Math.@interface
         public IMat operator_div(IMat b);
         // Division avec une matrices 
         public IMat operator_div(double b);
+
+        // creatation d'une matrice unitaire
+        abstract public static IMat Unit();
 
     }
 }

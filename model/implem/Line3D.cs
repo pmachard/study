@@ -1,47 +1,56 @@
-class Line3D : ILine3D
+using Math.@interface;
+using Math.implem;
+
+using Model.@interface;
+using Model.nterface;
+
+namespace Model.implem
 {
-  public Line3D()
-  {
-    O = new Coord3D();
-    V = new Coord3D();    
-  }
+    public class Line3D : ILine3D
+    {
+      public Line3D()
+      {
+        O = new Coord3D();
+        V = new Coord3D();    
+      }
   
-  public ICoord3D O {get; set};
-  public ICoord3D V {get; set};
+      public ICoord3D O { get; set; }
+      public ICoord3D V { get; set; }
 
-  public bool IsParallel(ILine3D other)
-  {    
-    return V.IsProportional(other);
-  }
+      public bool IsParallel(ILine3D other)
+      {    
+        return V.IsProportional(other.V);
+      }
   
-  public bool IsPerpendicular(ILine3D other)
-  {
-    produitScalaire = V ^ other.V;
-    // cela ne sufffit passss
-    return produitScalaire == 0.0;
-  }
+      public bool IsPerpendicular(ILine3D other)
+      {
+        double produitScalaire = V ^ other.V;
+        // cela ne sufffit passss
+        return produitScalaire == 0.0;
+      }
 
-  public bool IsSecant(ILine3D other);
-  {    
-    if (this.IsParallel(other))
-      return false;
+      public bool IsSecant(ILine3D other)
+      {    
+        if (this.IsParallel(other))
+          return false;
       
-    return true;
-  }
+        return true;
+      }
 
-  public ICoord3D Intersect(ILine3D other);
-  {  
-    if (!IsSecant(other))
-      return null;
-      ICoord3D result = new Coord3D();
+      public ICoord3D Intersect(ILine3D other)
+      {  
+        if (!IsSecant(other))
+          return null;
+        ICoord3D result = new Coord3D();
     
-    return result;
-  }
-  
-  public bool In(ICoord3D pt)
-  {
-    ICoord3D delta = pt - O;
-    return V.IsProportional(delta);
-  }
+        return result;
+      }
 
+      public bool In(ICoord3D pt)
+      {
+        ICoord3D delta = pt - O;
+        return V.IsProportional(delta);
+      }
+
+    }
 }

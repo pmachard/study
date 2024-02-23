@@ -1,10 +1,15 @@
-interface ISetEdge : ITranslatable
-{
-    // Ensemble de point par default vide 
-    public ISetEdge();
-    // Ajout d'un point dans la liste des point
-    public AddPoint(ICoord Pt);
+using Math.@interface;
+using Model.@interface;
 
-    // Iterator sur les points
-    public IEnumerator<ICoord3D> GetCoord();
-};
+namespace Model.@nterface
+{
+    public interface ISetEdge : ITranslatable
+    {
+        // Ajout d'un point dans la liste des point
+        public void AddPoint(ICoord3D Pt);
+
+        // Iterator sur les points
+        public IEnumerator<ICoord3D> GetCoord();
+    };
+
+}

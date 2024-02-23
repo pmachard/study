@@ -1,6 +1,6 @@
 namespace Math.@interface
 {
-    interface ICoordSystem
+    public interface ICoordSystem
     {
 
         // Centre du repère

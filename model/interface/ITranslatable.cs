@@ -1,5 +1,10 @@
-interface ITranslatable
+using Math.@interface;
+
+namespace Model.@interface
 {
-  // operation de translation
-  public RunTranlation(ICoord3D v);
+    public interface ITranslatable
+    {
+        // operation de translation
+        public void RunTranlation(ICoord3D v);
+    }
 }

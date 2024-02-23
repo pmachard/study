@@ -1,22 +1,31 @@
-class Cube : ICube
-{
-  public Cube()
-  {
-    LocalCoordSystem = new CoordSytem();
-    Size = 1.0;
-  }
-  
-  public ICube(ICoordSystem coordSystem, double size)
-  {
-    LocalCoordSystem = coordSytem;
-    Size = size;
-  }
+using Math.@interface;
+using Math.implem;
 
-  public ICoordSystem LocalCoordSystem {get; set;};
-  public double Size(get;set);
-  
-  public RunTranlation(ICoord3D v)
-  {
-      coordSystem.RunTranslation(v);
-  }
+using Model.@interface;
+
+namespace Model.implem
+{
+    class Cube : ICube
+    {
+        public Cube()
+        {
+            LocalCoordSystem = new CoordSystem();
+            Size = 1.0;
+        }
+
+        public Cube(ICoordSystem coordSystem, double size)
+        {
+            LocalCoordSystem = coordSystem;
+            Size = size;
+        }
+
+        public ICoordSystem LocalCoordSystem { get; set; }
+        public double Size { get; set; }
+
+        public void RunTranlation(ICoord3D v)
+        {
+
+            LocalCoordSystem.O = LocalCoordSystem.O + v;
+        }
+    }
 }
