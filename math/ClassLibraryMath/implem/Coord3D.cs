@@ -102,12 +102,15 @@ namespace Math.implem
             return new Coord3D(Z, Y, X);
         }
 
-        ICoord3D ICoord3D.operator_produit_vect(ICoord3D b)
+        public ICoord3D ICoord3D.operator_produit_vect(ICoord3D b)
         {
             return new Coord3D(Y * b.Z - Z * b.Y,
                                Z * b.X - X * b.Z,
                                X * b.Y - Y * b.X);
         }
-
+        public double Norme()
+        {
+            return sqrt(X*X+Y*Y+Z*Z);
+        }
     };
 }
