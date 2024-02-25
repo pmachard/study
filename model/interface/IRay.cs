@@ -4,7 +4,7 @@ using Model.@interface;
 namespace Model.@nterface
 {
     // Rayon utilisé dans l'algo du raytracing
-    public interface IRay : IObject3D
+    public interface IRay
     {
         // origine du rayon
         public ICoord3D O { get; set; }

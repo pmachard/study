@@ -33,8 +33,10 @@ namespace Model.implem
       {    
         if (this.IsParallel(other))
           return false;
-      
-        return true;
+
+            // cela ne sufffit passss
+
+            return true;
       }
 
       public ICoord3D Intersect(ILine3D other)
@@ -48,8 +50,7 @@ namespace Model.implem
 
       public bool In(ICoord3D pt)
       {
-        ICoord3D delta = pt - O;
-        return V.IsProportional(delta);
+        return V.IsProportional(pt - O);
       }
 
     }

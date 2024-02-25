@@ -9,25 +9,27 @@ namespace Model.implem
 
     public class Sphere : ISphere
     {
-        public Sphere()
+        public Sphere(string name="")
         {
-            LocalCoordSystem = new CoordSystem();
+            CS = new CoordSystem();
             Radius = 1.0;
+            Name = name;
         }
 
-        public Sphere(ICoordSystem cs, double r)
+        public Sphere(ICoordSystem cs, string name, double r)
         {
-            LocalCoordSystem = cs;
+            CS = cs;
             Radius = r;
+            Name = name;
         }
 
         public double Radius { get; set; }
-
-        public ICoordSystem LocalCoordSystem { get; set; }
+        public ICoordSystem CS { get; set; }
+        public string Name { get; set; }
 
         public void RunTranlation(ICoord3D v)
         {
-            LocalCoordSystem.O = LocalCoordSystem.O + v;
+            CS.O = CS.O + v;
         }
 
     }

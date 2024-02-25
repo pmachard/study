@@ -1,31 +1,33 @@
 using Math.@interface;
 using Math.implem;
-
 using Model.@interface;
 
 namespace Model.implem
 {
-    class Cube : ICube
+    public class Cube : ICube
     {
-        public Cube()
+        public Cube(string name="")
         {
-            LocalCoordSystem = new CoordSystem();
+            CS = new CoordSystem();
             Size = 1.0;
+            Name = name;
         }
 
-        public Cube(ICoordSystem coordSystem, double size)
+        public Cube(ICoordSystem coordSystem, string name,double size)
         {
-            LocalCoordSystem = coordSystem;
+            CS = coordSystem;
             Size = size;
+            Name = name;
         }
 
-        public ICoordSystem LocalCoordSystem { get; set; }
+        public ICoordSystem CS { get; set; }
         public double Size { get; set; }
+        public string Name { get; set; }
+
 
         public void RunTranlation(ICoord3D v)
         {
-
-            LocalCoordSystem.O = LocalCoordSystem.O + v;
+            CS.O = CS.O + v;
         }
     }
 }

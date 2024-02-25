@@ -148,5 +148,14 @@ namespace MathTests
             Assert.AreEqual(c2.Y, c1.Y);
             Assert.AreEqual(c2.Z, c1.X);
         }
+
+        [TestMethod]
+        public void TestEqual()
+        {
+            ICoord3D c1 = new Coord3D(1.0, 2.0, 3.0);
+            ICoord3D c2 = new Coord3D(1.0, 2.0, 3.0);
+            Assert.IsTrue(c1.Equals(c2));
+        }
+
     }
 }

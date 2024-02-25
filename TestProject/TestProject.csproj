@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\math\ClassLibraryMath\Math.csproj" />
+    <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>
 
 </Project>

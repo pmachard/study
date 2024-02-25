@@ -3,7 +3,7 @@ using Math.@interface;
 namespace Math.implem
 { 
 
-    public class Coord3D : ICoord3D
+    public class Coord3D : ICoord3D, IEquatable<Coord3D>
     {
         public Coord3D()
         {
@@ -107,6 +107,21 @@ namespace Math.implem
             return new Coord3D(Y * b.Z - Z * b.Y,
                                Z * b.X - X * b.Z,
                                X * b.Y - Y * b.X);
+        }
+
+        public bool Equals(Coord3D? other)
+        {
+            return  X == other.X && 
+                    Y == other.Y && 
+                    Z == other.Z;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(Coord3D)) return false;
+            return Equals((Coord3D)obj);
         }
 
     };

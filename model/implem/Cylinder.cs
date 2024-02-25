@@ -6,22 +6,25 @@ namespace Model.implem
 {
     public class Cylinder : ICylinder
     {
-        public Cylinder()
+        public Cylinder(string name = "")
         {
-            LocalCoordSystem = new CoordSystem();
+            CS = new CoordSystem();
             Radius = 1.0;
             Height = 1.0;
+            Name = name;
         }
-        public Cylinder(ICoordSystem localCoordSystem, double radius, double height)
+        public Cylinder(ICoordSystem localCoordSystem, string name, double radius, double height)
         {
-            LocalCoordSystem = localCoordSystem;
+            CS = localCoordSystem;
             Radius = radius;
             Height = height;
+            Name = name;
         }
 
         public double Radius { get; set; }
         public double Height { get; set; }
-        public ICoordSystem LocalCoordSystem { get; set; }
+        public ICoordSystem CS { get; set; }
+        public string Name { get; set; }
 
         public void RunTranlation(ICoord3D v)
         {

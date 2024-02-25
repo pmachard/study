@@ -10,7 +10,7 @@ namespace Model.@interface
         // hauteur du cylindre
         public double Height { get; set; }
         // repere du cylindre
-        public ICoordSystem LocalCoordSystem { get; set; }
+        public ICoordSystem CS { get; set; }
 
     }
 
