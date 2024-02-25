@@ -49,6 +49,8 @@ namespace Math.@interface
 
         // Swap des valeurs (x=z,y=y,z=x) 
         public ICoord3D swap();
+        // cacul de la norme du vecteur ayant ses coordonnées 
+        public double Norme()
 
     }
 
