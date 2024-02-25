@@ -1,3 +1,4 @@
+using System;
 using Math.@interface;
 
 namespace Math.implem
@@ -67,11 +68,6 @@ namespace Math.implem
             return X / b.X + Y / b.Y + Z / b.Z;
         }
 
-        public ICoord3D operator_produit_vect(ICoord3D b)
-        {
-            return new Coord3D(Y * b.Z - Z * b.Y, Z * b.X - X * b.Z, X * b.Y - Y * b.X);
-        }
-
         public bool IsProportional(ICoord3D other)
         {
             if (other.X == 0.0 && X != 0)
@@ -102,7 +98,7 @@ namespace Math.implem
             return new Coord3D(Z, Y, X);
         }
 
-        ICoord3D ICoord3D.operator_produit_vect(ICoord3D b)
+        public ICoord3D operator_produit_vect(ICoord3D b)
         {
             return new Coord3D(Y * b.Z - Z * b.Y,
                                Z * b.X - X * b.Z,
@@ -123,6 +119,9 @@ namespace Math.implem
             if (obj.GetType() != typeof(Coord3D)) return false;
             return Equals((Coord3D)obj);
         }
-
+        public double Norme()
+        {
+            return math.Sqrt(X * X + Y * Y + Z * Z);
+        }
     };
 }

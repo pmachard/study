@@ -11,5 +11,7 @@ namespace Math.@interface
         public ICoord3D J { get; set; }
         // Vecteur Z
         public ICoord3D K { get; set; }
+        // vérifie la normalité du repère 
+        public bool IsNormal();
     }
 }

@@ -157,5 +157,12 @@ namespace MathTests
             Assert.IsTrue(c1.Equals(c2));
         }
 
+        [TestMethod]
+        public  void TestNormalBasic()
+        { 
+            Assert.AreEqual((new Coord3D(1.0,0.0,0.0)).Norme(),1.0);               
+            Assert.AreEqual((new Coord3D(0.0,1.0,0.0)).Norme(),1.0);
+            Assert.AreEqual((new Coord3D(0.0,0.0,1.0)).Norme(),1.0);
+        }
     }
 }
