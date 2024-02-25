@@ -29,5 +29,24 @@ namespace Math.implem
         {
             O = O + v;
         }
+        public bool IsNormal()
+        {
+            if (I*J != 0.0)
+                return false;
+            if (I*K != 0.0)
+                return false;
+            if (J*K != 0.0)
+                return false;
+
+            if (I.Norme()!=1.0)
+                return false;
+
+            if (J.Norme()!=1.0)
+                return false;
+
+            if (K.Norme()!=1.0)
+                return false;
+            return true;
+        }
     }
 }
