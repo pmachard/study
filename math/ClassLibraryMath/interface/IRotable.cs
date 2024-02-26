@@ -1,7 +1,6 @@
 using Math.@interface;
-using Model.@interface;
 
-namespace Model.@nterface
+namespace Math.@nterface
 {
     interface IRotable
     {

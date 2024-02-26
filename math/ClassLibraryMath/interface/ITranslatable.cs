@@ -1,6 +1,6 @@
 using Math.@interface;
 
-namespace Model.@interface
+namespace Math.@interface
 {
     public interface ITranslatable
     {

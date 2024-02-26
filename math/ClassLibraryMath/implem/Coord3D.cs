@@ -1,4 +1,5 @@
 using System;
+using Math;
 using Math.@interface;
 
 namespace Math.implem
@@ -65,7 +66,7 @@ namespace Math.implem
 
         public double operator_scal(ICoord3D b)
         {
-            return X / b.X + Y / b.Y + Z / b.Z;
+            return X * b.X + Y * b.Y + Z * b.Z;
         }
 
         public bool IsProportional(ICoord3D other)
@@ -107,21 +108,31 @@ namespace Math.implem
 
         public bool Equals(Coord3D? other)
         {
-            return  X == other.X && 
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+
+            return X == other.X && 
                     Y == other.Y && 
                     Z == other.Z;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != typeof(Coord3D)) return false;
             return Equals((Coord3D)obj);
         }
+
+        public override int GetHashCode()
+        {
+            return X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
+        }
+
         public double Norme()
         {
-            return math.Sqrt(X * X + Y * Y + Z * Z);
+            return System.Math.Sqrt(X * X + Y * Y + Z * Z);
         }
+
     };
 }

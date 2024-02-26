@@ -42,7 +42,8 @@ namespace Model.implem
       public ICoord3D Intersect(ILine3D other)
       {  
         if (!IsSecant(other))
-          return null;
+          return new Coord3D(double.NaN, double.NaN, double.NaN);
+
         ICoord3D result = new Coord3D();
     
         return result;

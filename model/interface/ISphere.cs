@@ -6,7 +6,5 @@ namespace Model.@nterface
     public interface ISphere : IObject3D
     {
         public double Radius { get; set; }
-        public ICoordSystem CS { get; set; }
-
     }
 }

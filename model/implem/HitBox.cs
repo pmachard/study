@@ -12,6 +12,7 @@ namespace Model.implem
         {
             L = W = H = 1.0;
             CS = new CoordSystem();
+            Name = "";
         }
 
         public HitBox(ICoordSystem cs, double l, double h, double w)
@@ -21,6 +22,7 @@ namespace Model.implem
             W = w;
 
             CS = cs;
+            Name = "";
         }
 
         public double L { get; set; }
@@ -54,6 +56,8 @@ namespace Model.implem
         public List<ICoord3D> GetPtsAbsolute()
         {
             List<ICoord3D> points = GetPtsLocal();
+
+            points = CS.Transform(points);
             return points;
         }
     }

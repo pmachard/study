@@ -9,9 +9,6 @@ namespace Model.@interface
         public double Radius { get; set; }
         // hauteur du cylindre
         public double Height { get; set; }
-        // repere du cylindre
-        public ICoordSystem CS { get; set; }
-
     }
 
 }

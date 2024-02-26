@@ -106,15 +106,33 @@ namespace MathTests
         [TestMethod]
         public void TestDiv()
         {
-          ICoord3D c1 = new Coord3D(1.0,2.0,3.0);
-          ICoord3D c2 = new Coord3D(2.0,1.0,3.0);
-          ICoord3D c3 = c1 / c2;
+            ICoord3D c1 = new Coord3D(1.0, 2.0, 3.0);
+            ICoord3D c2 = new Coord3D(2.0, 1.0, 3.0);
+            ICoord3D c3 = c1 / c2;
 
-          Assert.AreEqual(c3.X, 0.5);
-          Assert.AreEqual(c3.Y, 2.0);
-          Assert.AreEqual(c3.Z, 1.0);
+            Assert.AreEqual(c3.X, 0.5);
+            Assert.AreEqual(c3.Y, 2.0);
+            Assert.AreEqual(c3.Z, 1.0);
         }
-        
+
+        [TestMethod]
+        public void TestScal01()
+        {
+            ICoord3D c1 = new Coord3D(1.0, 0.0, 0.0);
+            ICoord3D c2 = new Coord3D(0.0, 1.0, 0.0);
+
+            Assert.AreEqual(c1 ^ c2, 0.0);
+        }
+
+        [TestMethod]
+        public void TestScal02()
+        {
+            ICoord3D c1 = new Coord3D(1.0, 2.0, 3.0);
+            ICoord3D c2 = new Coord3D(4.0, 5.0, 3.0);
+
+            Assert.AreEqual(c1 ^ c2, 4.0 + 10.0 + 9.0 );
+        }
+
         [TestMethod]
         public void TestIsProportionalNull()
         {

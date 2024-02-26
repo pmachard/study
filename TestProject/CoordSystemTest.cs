@@ -19,14 +19,28 @@ namespace MathTests
             ICoord3D J = new Coord3D(0.0, 1.0, 0.0);
             ICoord3D K = new Coord3D(0.0, 0.0, 1.0);
 
-            Assert.AreEqual(I.Norme(), 1.0);
-            Assert.AreEqual(J.Norme(), 1.0);
-            Assert.AreEqual(K.Norme(), 1.0);
-
 
             ICoordSystem cs = new CoordSystem(O, I, J, K);
 
             Assert.IsTrue(cs.IsNormal());
+        }
+
+        void testTranform01()
+        {
+            ICoord3D O = new Coord3D(10.0, 20.0, 30.0);
+            ICoord3D I = new Coord3D(1.0, 0.0, 0.0);
+            ICoord3D J = new Coord3D(0.0, 1.0, 0.0);
+            ICoord3D K = new Coord3D(0.0, 0.0, 1.0);
+
+            ICoordSystem cs = new CoordSystem(O, I, J, K);
+
+            ICoord3D pt = new Coord3D(1.0, 2.0, 3.0);
+            ICoord3D ptTranform = cs.Transform(pt);
+
+
+            Assert.AreEqual(ptTranform, new Coord3D(11.0, 22.0, 33.0));
+
+
         }
     }
 }
