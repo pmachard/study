@@ -1,4 +1,5 @@
 using Math.@interface;
+using Model.nterface;
 
 namespace Model.@interface
 {
@@ -12,5 +13,6 @@ namespace Model.@interface
         // retourne les 8 points definissant la hitbox
         List<ICoord3D> GetPtsLocal();
         List<ICoord3D> GetPtsAbsolute();
+        List<ICoord3D> Collision(IRay ray);
     }
 }

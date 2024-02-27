@@ -1,7 +1,3 @@
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using System;
 using Math.@interface;
 using Math.implem;
 

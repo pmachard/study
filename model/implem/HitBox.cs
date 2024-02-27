@@ -2,6 +2,7 @@ using Math.@interface;
 using Math.implem;
 using Model.@interface;
 using System.Collections.Generic;
+using Model.nterface;
 
 namespace Model.implem
 {
@@ -58,6 +59,12 @@ namespace Model.implem
             List<ICoord3D> points = GetPtsLocal();
 
             points = CS.Transform(points);
+            return points;
+        }
+
+        public List<ICoord3D> Collision(IRay ray)
+        {
+            List<ICoord3D> points = new List<ICoord3D>();
             return points;
         }
     }

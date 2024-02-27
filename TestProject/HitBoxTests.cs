@@ -80,5 +80,24 @@ namespace ModelTests
             Assert.AreEqual(points[6], o + new Coord3D(-1.0, -2.0, -4.0));
             Assert.AreEqual(points[7], o + new Coord3D(-1.0, 2.0, -4.0));
         }
+
+        [TestMethod]
+        public void TestGetPointColision1()
+        {
+            ICoordSystem cs = new CoordSystem();
+            IHitBox hitBox = new HitBox(cs, 2.0, 2.0, 2.0);
+
+            ICoord3D o = new Coord3D(-10.0,0.0,0.0);
+            ICoord3D v = new Coord3D(1.0,0.0,0.0);
+            IRay ray = new Ray(o,v);
+
+            List<ICoord3D> points = hitBox.Collision(ray);
+
+            Assert.AreEqual(points.Count(), 2);
+
+            Assert.AreEqual(points[0], new Coord3D(1.0, 0.0, 0.0));
+            Assert.AreEqual(points[1], new Coord3D(-1.0, 0.0, 0.0));
+        }
+
     }
 }
