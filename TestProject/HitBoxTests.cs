@@ -82,6 +82,55 @@ namespace ModelTests
         }
 
         [TestMethod]
+        public void TestGetFacette1()
+        {
+            ICoordSystem cs = new CoordSystem();
+            IHitBox hitBox = new HitBox(cs, 2.0, 4.0, 8.0);
+
+            List<ICoord3D> points = hitBox.GetFacette(0);
+            Assert.AreEqual(points.Count(), 4);
+            Assert.AreEqual(points[0], new Coord3D(1.0, 2.0, 4.0));
+            Assert.AreEqual(points[1], new Coord3D(1.0, -2.0, 4.0));
+            Assert.AreEqual(points[2], new Coord3D(-1.0, -2.0, 4.0));
+            Assert.AreEqual(points[3], new Coord3D(-1.0, 2.0, 4.0));
+
+            points = hitBox.GetFacette(1);
+            Assert.AreEqual(points.Count(), 4);
+            Assert.AreEqual(points[0], new Coord3D(1.0, 2.0, 4.0));
+            Assert.AreEqual(points[1], new Coord3D(1.0, -2.0, 4.0));
+            Assert.AreEqual(points[2], new Coord3D(1.0, -2.0, -4.0));
+            Assert.AreEqual(points[3], new Coord3D(1.0, 2.0, -4.0));
+
+            points = hitBox.GetFacette(2);
+            Assert.AreEqual(points.Count(), 4);
+            Assert.AreEqual(points[0], new Coord3D(1.0, 2.0, -4.0));
+            Assert.AreEqual(points[1], new Coord3D(1.0, -2.0, -4.0));
+            Assert.AreEqual(points[2], new Coord3D(-1.0, -2.0, -4.0));
+            Assert.AreEqual(points[3], new Coord3D(-1.0, 2.0, -4.0));
+
+            points = hitBox.GetFacette(3);
+            Assert.AreEqual(points.Count(), 4);
+            Assert.AreEqual(points[0], new Coord3D(-1.0, 2.0, -4.0));
+            Assert.AreEqual(points[1], new Coord3D(-1.0, -2.0, -4.0));
+            Assert.AreEqual(points[2], new Coord3D(-1.0, -2.0, 4.0));
+            Assert.AreEqual(points[3], new Coord3D(-1.0, 2.0, 4.0));
+
+            points = hitBox.GetFacette(4);
+            Assert.AreEqual(points.Count(), 4);
+            Assert.AreEqual(points[0], new Coord3D(1.0, 2.0, 4.0));
+            Assert.AreEqual(points[1], new Coord3D(1.0, 2.0, -4.0));
+            Assert.AreEqual(points[2], new Coord3D(-1.0, 2.0, -4.0));
+            Assert.AreEqual(points[3], new Coord3D(-1.0, 2.0, 4.0));
+
+            points = hitBox.GetFacette(5);
+            Assert.AreEqual(points.Count(), 4);
+            Assert.AreEqual(points[0], new Coord3D(1.0, -2.0, 4.0));
+            Assert.AreEqual(points[1], new Coord3D(1.0, -2.0, -4.0));
+            Assert.AreEqual(points[2], new Coord3D(-1.0, -2.0, -4.0));
+            Assert.AreEqual(points[3], new Coord3D(-1.0, -2.0, 4.0));
+        }
+
+        [TestMethod]
         public void TestGetPointColision1()
         {
             ICoordSystem cs = new CoordSystem();

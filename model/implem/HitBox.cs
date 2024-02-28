@@ -43,7 +43,7 @@ namespace Model.implem
 
             points.Add(new Coord3D(L / 2.0, H / 2.0, W / 2.0));
             points.Add(new Coord3D(L / 2.0, -H / 2.0, W / 2.0));
-            points.Add(new Coord3D(-L / 2.0, -H / 2.0, W / 2.0));
+            points.Add(new Coord3D(-L / 2.0, -H / 2.0, W / 2.0));   
             points.Add(new Coord3D(-L / 2.0, H / 2.0, W / 2.0));
 
             points.Add(new Coord3D(L / 2.0, H / 2.0, -W / 2.0));
@@ -62,9 +62,64 @@ namespace Model.implem
             return points;
         }
 
+        public List<ICoord3D> GetFacette(int NumFacette)
+        {
+            List<ICoord3D> points = new List<ICoord3D>();
+
+            List<ICoord3D> allPoints = GetPtsLocal();
+
+            if ((NumFacette < 0) || (NumFacette>5))
+                throw new ArgumentException();
+
+            switch (NumFacette)
+            { 
+                case 0:
+                    points.Add(allPoints[0]);
+                    points.Add(allPoints[1]);
+                    points.Add(allPoints[2]);
+                    points.Add(allPoints[3]);
+                    break;
+                case 1:
+                    points.Add(allPoints[0]);
+                    points.Add(allPoints[1]);
+                    points.Add(allPoints[5]);
+                    points.Add(allPoints[4]);
+                    break;
+                case 2:
+                    points.Add(allPoints[4]);
+                    points.Add(allPoints[5]);
+                    points.Add(allPoints[6]);
+                    points.Add(allPoints[7]);
+                    break;
+                case 3:
+                    points.Add(allPoints[7]);
+                    points.Add(allPoints[6]);
+                    points.Add(allPoints[2]);
+                    points.Add(allPoints[3]);
+                    break;
+                case 4:
+                    points.Add(allPoints[0]);
+                    points.Add(allPoints[4]);
+                    points.Add(allPoints[7]);
+                    points.Add(allPoints[3]);
+                    break;
+                case 5:
+                    points.Add(allPoints[1]);
+                    points.Add(allPoints[5]);
+                    points.Add(allPoints[6]);
+                    points.Add(allPoints[2]);
+                    break;
+            }
+
+            return points;
+        }
+
         public List<ICoord3D> Collision(IRay ray)
         {
             List<ICoord3D> points = new List<ICoord3D>();
+
+
+
             return points;
         }
     }

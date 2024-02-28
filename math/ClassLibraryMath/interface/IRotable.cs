@@ -8,6 +8,8 @@ namespace Math.@nterface
         public void RunRotXoX(ICoord3D o, double a);
         public void RunRotYoY(ICoord3D o, double a);
         public void RunRotZoZ(ICoord3D o, double a);
+
+        public void RunRot(ICoord3D o, double a, double b, double c);
     }
 
 }

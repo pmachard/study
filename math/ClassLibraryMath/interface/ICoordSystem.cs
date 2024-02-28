@@ -13,6 +13,7 @@ namespace Math.@interface
         public ICoord3D K { get; set; }
         // vérifie la normalité du repère 
         public bool IsNormal();
+        public bool IsNotNormal() { return !IsNormal(); }
 
         public ICoord3D Transform(ICoord3D point);
         public List<ICoord3D> Transform(List<ICoord3D> points);

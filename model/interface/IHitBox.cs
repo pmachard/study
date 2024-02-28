@@ -11,8 +11,12 @@ namespace Model.@interface
         public double H { get; set; }
 
         // retourne les 8 points definissant la hitbox
-        List<ICoord3D> GetPtsLocal();
-        List<ICoord3D> GetPtsAbsolute();
-        List<ICoord3D> Collision(IRay ray);
+        public List<ICoord3D> GetPtsLocal();
+
+        public List<ICoord3D> GetPtsAbsolute();
+
+        public List<ICoord3D> Collision(IRay ray);
+
+        public List<ICoord3D> GetFacette(int NumFacette);
     }
 }

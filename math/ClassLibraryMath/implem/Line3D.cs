@@ -1,10 +1,8 @@
 using Math.@interface;
 using Math.implem;
 
-using Model.@interface;
-using Model.nterface;
 
-namespace Model.implem
+namespace Math.implem
 {
     public class Line3D : ILine3D
     {
@@ -35,7 +33,6 @@ namespace Model.implem
           return false;
 
             // cela ne sufffit passss
-
             return true;
       }
 

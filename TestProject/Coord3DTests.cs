@@ -179,4 +179,5 @@ namespace MathTests
             Assert.AreEqual((new Coord3D(0.0,0.0,1.0)).Norme(),1.0);
         }
     }
+
 }

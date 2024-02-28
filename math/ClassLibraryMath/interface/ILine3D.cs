@@ -1,6 +1,6 @@
 using Math.@interface;
 
-namespace Model.@nterface
+namespace Math.@interface
 {
     public interface ILine3D
     {
@@ -13,5 +13,5 @@ namespace Model.@nterface
 
         public ICoord3D Intersect(ILine3D other);
         public bool In(ICoord3D pt);
-    }
+    }  
 }
