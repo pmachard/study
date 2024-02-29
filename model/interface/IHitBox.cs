@@ -15,7 +15,7 @@ namespace Model.@interface
 
         public List<ICoord3D> GetPtsAbsolute();
 
-        public List<ICoord3D> Collision(IRay ray);
+        public List<IInterPoint> Collision(IRay ray);
 
         public List<ICoord3D> GetFacette(int NumFacette);
     }
