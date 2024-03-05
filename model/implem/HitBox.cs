@@ -3,6 +3,7 @@ using Math.implem;
 using Model.@interface;
 using System.Collections.Generic;
 using Model.nterface;
+using System.Timers;
 
 namespace Model.implem
 {
@@ -138,7 +139,8 @@ namespace Model.implem
             // Resolution de l'équation
             // w.x * (ray.O.X + ray.V.X * t-o.x) + w.y * (ray.O.Y + ray.V.Y * t-o.x) + w.z * (ray.O.Z + ray.V.Z * t-o.z)  = 0
             //
-            double d = (w.X * ray.V.X + w.Y * ray.V.Y + w.Z * ray.V.Z);
+            // double d = (w.X * ray.V.X + w.Y * ray.V.Y + w.Z * ray.V.Z);
+            double d = w ^ ray.V;
             if (d != 0.0)
             {
                 double t = -((w.X * ray.O.X + w.Y * ray.O.Y + w.Z * ray.O.Z) - (w.X * o.X + w.Y * o.Y + w.Z * o.Z)) / d;
@@ -150,8 +152,20 @@ namespace Model.implem
 
                 // Il faut maintenant vérifier que le point est bien a l'interieur de la facette
 
-                pointIntersection.R = point;
-                pointIntersection.WithInter = true;
+                // On se trouve dans le repére local
+                // IL suffit donc véfirier les coordonné avec la valeurs min et max
+                // Attention c'est une grosse approximation mais cela fonction 
+                if ((point.X < -L/2.0) || (point.X > L/2.0))
+                    pointIntersection.WithInter = false;
+                else if ((point.Y < -H / 2.0) || (point.Y > H / 2.0))
+                    pointIntersection.WithInter = false;
+                else if ((point.Z < -W / 2.0) || (point.Z > W / 2.0))
+                    pointIntersection.WithInter = false;
+                else
+                {
+                    pointIntersection.R = point;
+                    pointIntersection.WithInter = true;
+                }
             }
             else
             {
@@ -162,6 +176,14 @@ namespace Model.implem
             return pointIntersection;
         }
 
+        public bool exist(List<IInterPoint> points,IInterPoint point)
+        {
+            foreach (IInterPoint pt in points)
+                if ((pt.R.X == point.R.X) && (pt.R.Y == point.R.Y) && (pt.R.Z == point.R.Z))
+                    return true;
+            return false;
+        }
+
         public List<IInterPoint> Collision(IRay ray)
         {
             List<IInterPoint> points = new List<IInterPoint>();
@@ -169,7 +191,7 @@ namespace Model.implem
             for (int i =0; i < 6; i++)
             {
                 IInterPoint ptInter = CollisionFacette(ray, i);
-                if (ptInter.WithInter)
+                if ((ptInter.WithInter) && !exist(points,ptInter))
                     points.Add(ptInter);
 
             }

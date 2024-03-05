@@ -148,5 +148,63 @@ namespace ModelTests
             Assert.AreEqual(points[1].R, new Coord3D(0.0, 0.0, -1.0));
         }
 
+        [TestMethod]
+        public void TestGetPointColision2()
+        {
+            ICoordSystem cs = new CoordSystem();
+            IHitBox hitBox = new HitBox(cs, 2.0, 2.0, 2.0);
+
+            ICoord3D o = new Coord3D(0.5, 0.5, 0.5);
+            ICoord3D v = new Coord3D(0.0, 0.0, 1.0);
+            IRay ray = new Ray(o, v);
+
+            List<IInterPoint> points = hitBox.Collision(ray);
+
+            Assert.AreEqual(points.Count(), 2);
+
+            Assert.AreEqual(points[0].R, new Coord3D(0.5, 0.5, 1.0));
+            Assert.AreEqual(points[1].R, new Coord3D(0.5, 0.5, -1.0));
+        }
+
+        [TestMethod]
+        public void TestGetPointColision4()
+        {
+            ICoordSystem cs = new CoordSystem();
+            IHitBox hitBox = new HitBox(cs, 2.0, 2.0, 2.0);
+
+            ICoord3D o = new Coord3D(0.0, 0.0, -2.0);
+            ICoord3D v = new Coord3D(0.0, 1.0, 1.0);
+            IRay ray = new Ray(o, v);
+
+            List<IInterPoint> points = hitBox.Collision(ray);
+
+            Assert.AreEqual(points.Count(), 1);
+
+            Assert.AreEqual(points[0].R, new Coord3D(0.0, 1.0, -1.0));
+        }
+
+        [TestMethod]
+        public void TestGetPointColision3()
+        {
+            ICoordSystem cs = new CoordSystem(
+                new Coord3D(10.0, 0.0, 0.0),
+                new Coord3D(1.0, 0.0, 0.0),
+                new Coord3D(0.0, 1.0, 0.0),
+                new Coord3D(0.0, 0.0, 1.0)
+                );
+            IHitBox hitBox = new HitBox(cs, 2.0, 2.0, 2.0);
+
+            ICoord3D o = new Coord3D(0.0, 0.0, 0.0);
+            ICoord3D v = new Coord3D(0.0, 0.0, 1.0);
+            IRay ray = new Ray(o, v);
+
+            List<IInterPoint> points = hitBox.Collision(ray);
+
+            Assert.AreEqual(points.Count(), 2);
+
+            Assert.AreEqual(points[0].R, new Coord3D(0.0, 0.0, 1.0));
+            Assert.AreEqual(points[1].R, new Coord3D(0.0, 0.0, -1.0));
+        }
+
     }
 }
