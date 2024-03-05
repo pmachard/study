@@ -1,6 +1,7 @@
 using Math.@interface;
 using Math.implem;
 using Model.@interface;
+using System.Drawing;
 
 namespace Model.implem
 {
@@ -25,6 +26,11 @@ namespace Model.implem
         public double Height { get; set; }
         public ICoordSystem CS { get; set; }
         public string Name { get; set; }
+
+        public IHitBox GetHitBox()
+        {
+            return new HitBox(CS, Radius, Radius, Height);
+        }
 
         public void RunTranlation(ICoord3D v)
         {

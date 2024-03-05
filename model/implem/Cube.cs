@@ -9,21 +9,25 @@ namespace Model.implem
         public Cube(string name="")
         {
             CS = new CoordSystem();
-            Size = 1.0;
             Name = name;
+            Size = 1.0;
         }
 
         public Cube(ICoordSystem coordSystem, string name,double size)
         {
             CS = coordSystem;
-            Size = size;
             Name = name;
+            Size = size;
         }
 
         public ICoordSystem CS { get; set; }
-        public double Size { get; set; }
         public string Name { get; set; }
+        public double Size { get; set; }
 
+        public IHitBox GetHitBox()
+        {
+            return new HitBox(CS, Size, Size, Size);
+        }
 
         public void RunTranlation(ICoord3D v)
         {

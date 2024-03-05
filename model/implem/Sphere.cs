@@ -27,6 +27,11 @@ namespace Model.implem
         public ICoordSystem CS { get; set; }
         public string Name { get; set; }
 
+        public IHitBox GetHitBox()
+        {
+            return new HitBox(CS, Radius, Radius, Radius);
+        }
+
         public void RunTranlation(ICoord3D v)
         {
             CS.O = CS.O + v;

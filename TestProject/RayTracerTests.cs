@@ -9,6 +9,21 @@ namespace ModelTests
     [TestClass]
     public class RayTracerTests
     {
+        private IRayTracer _raytracer;
+
+        public RayTracerTests() 
+        {
+            _raytracer = new RayTracer();
+            _raytracer.CS = new CoordSystem();
+            _raytracer.Camera = new CameraRay();
+
+            _raytracer.Camera.CS = new CoordSystem(
+                new Coord3D(0.0, 0.0, -10.0),
+                new Coord3D(1.0, 0.0, 0.0),
+                new Coord3D(0.0, 1.0, 0.0),
+                new Coord3D(0.0, 0.0, 1.0));
+        }
+
         [TestMethod]
         public void TestCreateDefault()
         {
@@ -18,5 +33,18 @@ namespace ModelTests
             Assert.IsTrue(raytracer.Camera.CS.Equals(new CoordSystem()));
         }
 
+        [TestMethod]
+        public void TestCreateInitLocal()
+        {
+            Assert.IsTrue(_raytracer.CS.Equals(new CoordSystem()));
+            _raytracer.Camera.L = 4.0;
+            _raytracer.Camera.H = 2.0;
+
+            _raytracer.Camera.NbrPointL = 20;
+            _raytracer.Camera.NbrPointH = 10;
+
+            Assert.AreEqual(_raytracer.Camera.DeltaL, 0.2);
+            Assert.AreEqual(_raytracer.Camera.DeltaH, 0.2);
+        }
     }
 }

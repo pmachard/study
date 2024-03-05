@@ -1,9 +1,7 @@
 using Math.@interface;
 using Math.implem;
 using Model.@interface;
-using System.Collections.Generic;
 using Model.nterface;
-using System.Timers;
 
 namespace Model.implem
 {
@@ -196,6 +194,11 @@ namespace Model.implem
 
             }
             return points;
+        }
+
+        public IHitBox GetHitBox()
+        {
+            return this;
         }
     }
 }

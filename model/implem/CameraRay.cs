@@ -14,7 +14,12 @@ namespace Model.implem
         }
 
         public ICoordSystem CS { get; set; }
-        public double H { get ; set ; }
-        public double L { get ; set ; }
+        public double H { get; set; }
+        public double L { get; set; }
+        public int NbrPointH { get; set; }
+        public int NbrPointL { get; set; }
+
+        public double DeltaH => H / NbrPointH ;
+        public double DeltaL => L / NbrPointL;
     }
 }
