@@ -136,9 +136,8 @@ namespace ModelTests
             ICoordSystem cs = new CoordSystem();
             IHitBox hitBox = new HitBox(cs, 2.0, 2.0, 2.0);
 
-            ICoord3D o = new Coord3D(0.0,0.0,0.0);
-            ICoord3D v = new Coord3D(0.0,0.0,1.0);
-            IRay ray = new Ray(o,v);
+            IRay ray = new Ray( new Coord3D(0.0, 0.0, 0.0), 
+                                new Coord3D(0.0, 0.0, 1.0));
 
             List<IInterPoint> points = hitBox.Collision(ray);
 
@@ -154,9 +153,8 @@ namespace ModelTests
             ICoordSystem cs = new CoordSystem();
             IHitBox hitBox = new HitBox(cs, 2.0, 2.0, 2.0);
 
-            ICoord3D o = new Coord3D(0.5, 0.5, 0.5);
-            ICoord3D v = new Coord3D(0.0, 0.0, 1.0);
-            IRay ray = new Ray(o, v);
+            IRay ray = new Ray( new Coord3D(0.5, 0.5, 0.5), 
+                                new Coord3D(0.0, 0.0, 1.0));
 
             List<IInterPoint> points = hitBox.Collision(ray);
 
@@ -164,23 +162,6 @@ namespace ModelTests
 
             Assert.AreEqual(points[0].R, new Coord3D(0.5, 0.5, 1.0));
             Assert.AreEqual(points[1].R, new Coord3D(0.5, 0.5, -1.0));
-        }
-
-        [TestMethod]
-        public void TestGetPointColision4()
-        {
-            ICoordSystem cs = new CoordSystem();
-            IHitBox hitBox = new HitBox(cs, 2.0, 2.0, 2.0);
-
-            ICoord3D o = new Coord3D(0.0, 0.0, -2.0);
-            ICoord3D v = new Coord3D(0.0, 1.0, 1.0);
-            IRay ray = new Ray(o, v);
-
-            List<IInterPoint> points = hitBox.Collision(ray);
-
-            Assert.AreEqual(points.Count(), 1);
-
-            Assert.AreEqual(points[0].R, new Coord3D(0.0, 1.0, -1.0));
         }
 
         [TestMethod]
@@ -194,9 +175,8 @@ namespace ModelTests
                 );
             IHitBox hitBox = new HitBox(cs, 2.0, 2.0, 2.0);
 
-            ICoord3D o = new Coord3D(0.0, 0.0, 0.0);
-            ICoord3D v = new Coord3D(0.0, 0.0, 1.0);
-            IRay ray = new Ray(o, v);
+            IRay ray = new Ray( new Coord3D(0.0, 0.0, 0.0), 
+                                new Coord3D(0.0, 0.0, 1.0));
 
             List<IInterPoint> points = hitBox.Collision(ray);
 
@@ -204,6 +184,61 @@ namespace ModelTests
 
             Assert.AreEqual(points[0].R, new Coord3D(0.0, 0.0, 1.0));
             Assert.AreEqual(points[1].R, new Coord3D(0.0, 0.0, -1.0));
+        }
+
+        [TestMethod]
+        public void TestGetPointColision4()
+        {
+            IHitBox hitBox = new HitBox(new CoordSystem(), 2.0, 2.0, 2.0);
+
+            IRay ray = new Ray( new Coord3D(0.0, 0.0, -2.0), 
+                                new Coord3D(0.0, 1.0, 1.0));
+
+            List<IInterPoint> points = hitBox.Collision(ray);
+            Assert.AreEqual(points.Count(), 1);
+            Assert.AreEqual(points[0].R, new Coord3D(0.0, 1.0, -1.0));
+
+            ray = new Ray(  new Coord3D(0.5, 0.0, -2.0),
+                            new Coord3D(0.0, 1.0, 1.0));
+
+            points = hitBox.Collision(ray);
+            Assert.AreEqual(points.Count(), 1);
+            Assert.AreEqual(points[0].R, new Coord3D(0.5, 1.0, -1.0));
+
+            ray = new Ray(  new Coord3D(5.0, 0.0, -2.0), 
+                            new Coord3D(0.0, 1.0, 1.0));
+
+            points = hitBox.Collision(ray);
+            Assert.AreEqual(points.Count(), 0);
+
+            ray = new Ray(  new Coord3D(0.0, 5.0, -2.0), 
+                            new Coord3D(0.0, 1.0, 1.0));
+
+            points = hitBox.Collision(ray);
+            Assert.AreEqual(points.Count(), 0);
+        }
+
+        [TestMethod]
+        public void TestGetPointColision5()
+        {
+            IHitBox hitBox = new HitBox(new CoordSystem(), 2.0, 2.0, 2.0);
+
+            IRay ray = new Ray( new Coord3D(0.0, 0.0, -2.0), 
+                                new Coord3D(0.0, 0.5, 1.0));
+
+            List<IInterPoint> points = hitBox.Collision(ray);
+
+            Assert.AreEqual(points.Count(), 2);
+            Assert.AreEqual(points[0].R, new Coord3D(0.0, 0.5, -1.0));
+            Assert.AreEqual(points[1].R, new Coord3D(0.0, 1.0, 0.0));
+
+            ray = new Ray(new Coord3D(0.5, 0.0, -2.0), new Coord3D(0.0, 0.5, 1.0));
+
+            points = hitBox.Collision(ray);
+
+            Assert.AreEqual(points.Count(), 2);
+            Assert.AreEqual(points[0].R, new Coord3D(0.5, 0.5, -1.0));
+            Assert.AreEqual(points[1].R, new Coord3D(0.5, 1.0, 0.0));
         }
 
     }
