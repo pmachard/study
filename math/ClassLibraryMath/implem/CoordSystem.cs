@@ -48,11 +48,11 @@ namespace Math.implem
         }
         public bool IsNormal()
         {
-            if (I^J != 0.0)
+            if ((I^J) != 0.0)
                 return false;
-            if (I^K != 0.0)
+            if ((I^K) != 0.0)
                 return false;
-            if (J^K != 0.0)
+            if ((J^K) != 0.0)
                 return false;
 
             if (I.Norme()!=1.0)

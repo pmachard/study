@@ -1,5 +1,5 @@
-using Math.@Interface;
-namespace Math.@Implem
+using Math.@interface;
+namespace Math.@implem
 {
     public class Line3D : ILine3D
     {
@@ -19,15 +19,15 @@ namespace Math.@Implem
          public ICoord3D O{get;set;}
          public ICoord3D V{get;set;}
          
-         public double Compute(Icoord3D pt) 
+         public double Compute(ICoord3D pt) 
          {
               return 0.0; 
          }
          public bool In(ICoord3D pt) 
          {
-              return False;
+              return false;
          }
-         public ICoord3D Intersection(ILine line)
+         public ICoord3D Intersection(ILine3D line)
          {
               return new Coord3D();
          }

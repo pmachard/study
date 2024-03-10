@@ -121,7 +121,7 @@ namespace Math.implem
         }
         public double Norme()
         {
-            return math.Sqrt(X * X + Y * Y + Z * Z);
+            return System.Math.Sqrt(X * X + Y * Y + Z * Z);
         }
     };
 }
