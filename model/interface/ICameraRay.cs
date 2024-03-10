@@ -1,4 +1,5 @@
-﻿using Math.@interface;
+﻿using Math.implem;
+using Math.@interface;
 
 namespace Model.nterface
 {
@@ -13,5 +14,7 @@ namespace Model.nterface
         public int NbrPointH { get; set; }
         public int NbrPointL { get; set; }
 
+        bool CheckCoord(int x, int y);
+        ICoord3D GetCoord(int x, int y);
     }
 }

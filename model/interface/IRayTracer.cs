@@ -10,5 +10,7 @@ namespace Model.@nterface
         public ICoordSystem CS { get; set; }
 
         public ICameraRay Camera{ get; set; }
+
+        IRay ComputeRay(int v1, int v2);
     }
 }

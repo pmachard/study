@@ -17,5 +17,15 @@ namespace Model.implem
         public ICoordSystem CS { get; set; }
         public ICameraRay Camera { get; set; }
 
+        public IRay ComputeRay(int x, int y)
+        {
+            if (!Camera.CheckCoord(x, y))
+                throw new ArgumentException();
+
+            ICoord3D coord = Camera.GetCoord(x, y);
+            ICoord3D vect = coord - CS.O;
+
+            return new Ray(CS.O, vect);
+        }
     }
 }

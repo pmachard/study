@@ -21,5 +21,24 @@ namespace Model.implem
 
         public double DeltaH => H / NbrPointH ;
         public double DeltaL => L / NbrPointL;
+
+        public bool CheckCoord(int x, int y)
+        {
+            if ((x < -NbrPointL / 2) || (x > NbrPointL / 2))
+                return false;
+
+            if ((y < -NbrPointH / 2) || (y > NbrPointH / 2))
+                return false;
+
+            return true;
+        }
+
+        public ICoord3D GetCoord(int x, int y)
+        {
+            if (!CheckCoord(x, y))
+                throw new ArgumentException();
+
+            return CS.O + (CS.I * DeltaL * (double)x) + (CS.J * DeltaH * (double)y);
+        }
     }
 }
