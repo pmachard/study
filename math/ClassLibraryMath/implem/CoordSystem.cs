@@ -22,9 +22,7 @@ namespace Math.implem
             K = new Coord3D(k);
 
             if (!IsNormal())
-            {
                 throw new ArgumentException();
-            }
         }
 
         public ICoord3D O { get; set; }
