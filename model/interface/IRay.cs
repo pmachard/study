@@ -1,7 +1,7 @@
 using Math.@interface;
 using Model.@interface;
 
-namespace Model.@nterface
+namespace Model.@interface
 {
     // Rayon utilisé dans l'algo du raytracing
     public interface IRay

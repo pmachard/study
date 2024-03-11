@@ -1,7 +1,7 @@
 ﻿using Math.implem;
 using Math.@interface;
 
-namespace Model.nterface
+namespace Model.@interface
 {
     public interface ICameraRay
     {
@@ -16,5 +16,7 @@ namespace Model.nterface
 
         bool CheckCoord(int x, int y);
         ICoord3D GetCoord(int x, int y);
+
+        IImage InitImage();
     }
 }

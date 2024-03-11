@@ -10,5 +10,7 @@ namespace Model.@interface
         public string Name { get; set; }
         // recupere la hit box de l'objet 3D
         public IHitBox GetHitBox();
+
+        public IPointCollision Compute(IRay ray);
     }
 }

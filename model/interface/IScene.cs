@@ -2,7 +2,7 @@
 using Model.implem;
 using Model.@interface;
 
-namespace Model.@nterface
+namespace Model.@interface
 {
     public interface IScene
     {
@@ -15,5 +15,9 @@ namespace Model.@nterface
         public int NbrObjects();
         // Retourne l'object 3D a la position précisé
         public IObject3D GetObject(int pos);
+        // Supprime un objet de la scene
+        public void RemoveObject(IObject3D o);
+
+        public IEnumerator<IObject3D> GetEnumerator();
     }
 }

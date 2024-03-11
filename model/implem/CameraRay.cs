@@ -1,6 +1,6 @@
 ﻿using Math.@interface;
 using Math.implem;
-using Model.nterface;
+using Model.@interface;
 
 namespace Model.implem
 {
@@ -39,6 +39,11 @@ namespace Model.implem
                 throw new ArgumentException();
 
             return CS.O + (CS.I * DeltaL * (double)x) + (CS.J * DeltaH * (double)y);
+        }
+
+        public IImage InitImage()
+        {
+            return new Image((int)(L / DeltaL), (int)(H / DeltaH));
         }
     }
 }

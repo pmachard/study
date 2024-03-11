@@ -1,6 +1,7 @@
 
 using Math.implem;
 using Model.implem;
+using Model.@interface;
 using Model.nterface;
 
 
@@ -106,6 +107,29 @@ namespace ModelTests
                     Assert.IsNotNull(ray);
                 }
             }
+        }
+
+        [TestMethod]
+        public void TestCompute()
+        {
+            _raytracer.Camera.CS = new CoordSystem(
+                new Coord3D(0.0, 0.0, 10.0),
+                new Coord3D(1.0, 0.0, 0.0),
+                new Coord3D(0.0, 1.0, 0.0),
+                new Coord3D(0.0, 0.0, 1.0)
+                );
+
+            _raytracer.Camera.L = 2.0;
+            _raytracer.Camera.H = 1.0;
+            _raytracer.Camera.NbrPointL = 20;
+            _raytracer.Camera.NbrPointH = 10;
+
+            IScene scene = new Scene();
+
+            scene.AddObject(new Cube());
+
+            IImage image = _raytracer.Compute(scene);
+            Assert.IsNotNull(image);
         }
     }
 }

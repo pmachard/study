@@ -1,7 +1,8 @@
 using Math.@interface;
+using Model.implem;
 using Model.@interface;
 
-namespace Model.@nterface
+namespace Model.@interface
 {
     // modelisation du trace de rayon
     public interface IRayTracer 
@@ -11,6 +12,8 @@ namespace Model.@nterface
 
         public ICameraRay Camera{ get; set; }
 
-        IRay ComputeRay(int v1, int v2);
+        IRay ComputeRay(int x, int y);
+
+        IImage Compute(IScene scene);
     }
 }

@@ -21,6 +21,11 @@ namespace Model.implem
             _objects.Add(o);
         }
 
+        public void RemoveObject(IObject3D o)
+        {
+            _objects.Remove(o);
+        }
+
         public int NbrObjects()
         {
             return _objects.Count();
@@ -34,5 +39,14 @@ namespace Model.implem
             return _objects[pos];
         }
 
+        public IEnumerator<IObject3D> GetEnumerator()
+        {
+            if (_objects == null)
+                yield return null;
+
+            foreach(IObject3D object3D in _objects)
+            {  yield return object3D; 
+            }
+        }
     }
 }

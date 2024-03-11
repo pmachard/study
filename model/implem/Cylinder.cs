@@ -27,6 +27,11 @@ namespace Model.implem
         public ICoordSystem CS { get; set; }
         public string Name { get; set; }
 
+        public IPointCollision Compute(IRay ray)
+        {
+            throw new NotImplementedException();
+        }
+
         public IHitBox GetHitBox()
         {
             return new HitBox(CS, Radius, Radius, Height);

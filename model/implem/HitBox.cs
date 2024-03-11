@@ -200,5 +200,10 @@ namespace Model.implem
         {
             return this;
         }
+
+        public IPointCollision Compute(IRay ray)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
