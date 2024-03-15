@@ -2,6 +2,7 @@ using Math.@interface;
 using Math.implem;
 using Model.@interface;
 using System.Drawing;
+using Model.nterface;
 
 namespace Model.implem
 {
@@ -27,7 +28,17 @@ namespace Model.implem
         public ICoordSystem CS { get; set; }
         public string Name { get; set; }
 
-        public IPointCollision Compute(IRay ray)
+        public IInterPoint Compute(IRay ray)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IInterPoint Compute(IScene scene, IRay ray)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IColor Compute(IScene scene, IRay ray, IInterPoint closerPoint)
         {
             throw new NotImplementedException();
         }

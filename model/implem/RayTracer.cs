@@ -31,17 +31,15 @@ namespace Model.implem
 
         public IImage Compute(IScene scene)
         {
-            if (Camera == null)
-                return null;
-
-            if (CS == null)
-                return null;
-
             IImage image = Camera.InitImage();
 
-            for (int x = (int)(-Camera.L / Camera.DeltaL / 2), xImage = 0; x < (int)(Camera.L / Camera.DeltaL / 2); x++, xImage++)
+            for (   int x = (int)(-Camera.L / Camera.DeltaL / 2), xImage = 0; 
+                    x < (int)(Camera.L / Camera.DeltaL / 2); 
+                    x++, xImage++)
             {
-                for (int y = (int)(-Camera.H / Camera.DeltaH / 2), yImage = 0; y < (int)(Camera.H / Camera.DeltaH / 2); y++, yImage++)
+                for (   int y = (int)(-Camera.H / Camera.DeltaH / 2), yImage = 0; 
+                        y < (int)(Camera.H / Camera.DeltaH / 2); 
+                        y++, yImage++)
                 {
                     IRay ray = ComputeRay(x, y);
                     IColor color = Compute(scene, ray);
@@ -52,16 +50,26 @@ namespace Model.implem
             return image;
         }
 
+        public IInterPoint CloserPoint(List<IInterPoint> points)
+        {
+            double distanceMax = double.PositiveInfinity;
+            IInterPoint pointMin = null;
+            foreach (IInterPoint point in points)
+            {
+                if (distanceMax > point.D)
+                {
+                    distanceMax = point.D;
+                    pointMin = point;
+                }
+            }
+            return pointMin;
+        }
+
         public IColor Compute(IScene scene,IRay ray)
         {
+            IColor colorResult = new Color(0.0,0.0,0.0);
 
-            if (scene == null)
-                return null;
-
-            if (ray == null)
-                return null;
-
-            foreach(IObject3D object3D in scene)
+            foreach (IObject3D object3D in scene)
             {
                 // Recupére la hitbox pour faire un premier test de collision avec l'objet
                 IHitBox hitBox = object3D.GetHitBox();
@@ -73,12 +81,17 @@ namespace Model.implem
                 {
                     // Il y a potentiellement un objet en collision avec le rayon
                     // Calcul le point de collision exacte avec la distance et la normal (normal pour un gain de temps par la suite) 
+                    IInterPoint pt = object3D.Compute(ray);
+                }
+                IInterPoint closerPoint = CloserPoint(pointsInter);
 
-                    IPointCollision pt = object3D.Compute(ray);
+                if (closerPoint != null)
+                {
+                    colorResult = closerPoint.ObjectInter.Compute(scene, ray, closerPoint);
                 }
             }
             // Recherche le point le plus proche dans la liste des collisions
-            return null;
+            return new Color(0.0,0.0,0.0);
         }
     }
  }

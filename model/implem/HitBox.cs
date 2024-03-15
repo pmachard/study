@@ -115,7 +115,7 @@ namespace Model.implem
 
         public IInterPoint CollisionFacette(IRay ray,int pos)
         {
-            IInterPoint pointIntersection = new InterPoint();
+            IInterPoint pointInter = new InterPoint();
 
             // Récupére les point de la facette
             List<ICoord3D> pointsFacette = GetFacette(pos);
@@ -154,24 +154,27 @@ namespace Model.implem
                 // IL suffit donc véfirier les coordonné avec la valeurs min et max
                 // Attention c'est une grosse approximation mais cela fonction 
                 if ((point.X < -L/2.0) || (point.X > L/2.0))
-                    pointIntersection.WithInter = false;
+                    pointInter.WithInter = false;
                 else if ((point.Y < -H / 2.0) || (point.Y > H / 2.0))
-                    pointIntersection.WithInter = false;
+                    pointInter.WithInter = false;
                 else if ((point.Z < -W / 2.0) || (point.Z > W / 2.0))
-                    pointIntersection.WithInter = false;
+                    pointInter.WithInter = false;
                 else
                 {
-                    pointIntersection.R = point;
-                    pointIntersection.WithInter = true;
+                    pointInter.R = point;
+                    pointInter.N = w;
+                    pointInter.D = (point - ray.O).Norme();
+                    pointInter.WithInter = true;
+                    pointInter.ObjectInter = this;
                 }
             }
             else
             {
                 // Le denominateur est null il n'y a pas d'intesection
-                pointIntersection.WithInter = false;
+                pointInter.WithInter = false;
             }
 
-            return pointIntersection;
+            return pointInter;
         }
 
         public bool exist(List<IInterPoint> points,IInterPoint point)
@@ -190,8 +193,11 @@ namespace Model.implem
             {
                 IInterPoint ptInter = CollisionFacette(ray, i);
                 if ((ptInter.WithInter) && !exist(points,ptInter))
+                {
+                    // Cas particilier ou la hitbox et egal a l'objet
+                    ptInter.ObjectInter = this;
                     points.Add(ptInter);
-
+                }
             }
             return points;
         }
@@ -201,7 +207,17 @@ namespace Model.implem
             return this;
         }
 
-        public IPointCollision Compute(IRay ray)
+        public IInterPoint Compute(IRay ray)
+        {
+            return null;
+        }
+
+        public IInterPoint Compute(IScene scene, IRay ray)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IColor Compute(IScene scene, IRay ray, IInterPoint closerPoint)
         {
             throw new NotImplementedException();
         }
