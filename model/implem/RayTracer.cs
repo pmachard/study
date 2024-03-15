@@ -53,7 +53,7 @@ namespace Model.implem
         public IInterPoint CloserPoint(List<IInterPoint> points)
         {
             double distanceMax = double.PositiveInfinity;
-            IInterPoint pointMin = null;
+            IInterPoint pointMin = new InterPoint();
             foreach (IInterPoint point in points)
             {
                 if (distanceMax > point.D)
@@ -71,27 +71,28 @@ namespace Model.implem
 
             foreach (IObject3D object3D in scene)
             {
+                if (object3D == null)
+                    continue;
                 // Recupére la hitbox pour faire un premier test de collision avec l'objet
                 IHitBox hitBox = object3D.GetHitBox();
                 if (hitBox == null) 
                     continue;
 
                 List<IInterPoint> pointsInter = hitBox.Collision(ray);
-                if (pointsInter.Count > 0)
-                {
-                    // Il y a potentiellement un objet en collision avec le rayon
-                    // Calcul le point de collision exacte avec la distance et la normal (normal pour un gain de temps par la suite) 
-                    IInterPoint pt = object3D.Compute(ray);
-                }
+                // Il y a potentiellement un objet en collision avec le rayon
+                // Calcul le point de collision exacte avec la distance et la normal (normal pour un gain de temps par la suite) 
                 IInterPoint closerPoint = CloserPoint(pointsInter);
-
                 if (closerPoint != null)
                 {
-                    colorResult = closerPoint.ObjectInter.Compute(scene, ray, closerPoint);
+                    colorResult = closerPoint.ColorInter;
+                }
+                else
+                {
+                    colorResult = new Color(0.0,0.0,0.0);
                 }
             }
             // Recherche le point le plus proche dans la liste des collisions
-            return new Color(0.0,0.0,0.0);
+            return colorResult;
         }
     }
  }

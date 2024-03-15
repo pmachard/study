@@ -207,19 +207,24 @@ namespace Model.implem
             return this;
         }
 
+        public IInterPoint CloserPoint(List<IInterPoint> points)
+        {
+            double distanceMax = double.PositiveInfinity;
+            IInterPoint pointMin = new InterPoint();
+            foreach (IInterPoint point in points)
+            {
+                if (distanceMax > point.D)
+                {
+                    distanceMax = point.D;
+                    pointMin = point;
+                }
+            }
+            return pointMin;
+        }
+
         public IInterPoint Compute(IRay ray)
         {
-            return null;
-        }
-
-        public IInterPoint Compute(IScene scene, IRay ray)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IColor Compute(IScene scene, IRay ray, IInterPoint closerPoint)
-        {
-            throw new NotImplementedException();
+            return CloserPoint(Collision(ray));
         }
     }
 }

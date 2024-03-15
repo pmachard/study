@@ -33,16 +33,6 @@ namespace Model.implem
             throw new NotImplementedException();
         }
 
-        public IInterPoint Compute(IScene scene, IRay ray)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IColor Compute(IScene scene, IRay ray, IInterPoint closerPoint)
-        {
-            throw new NotImplementedException();
-        }
-
         public IHitBox GetHitBox()
         {
             return new HitBox(CS, Radius, Radius, Height);

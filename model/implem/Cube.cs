@@ -28,7 +28,7 @@ namespace Model.implem
         public IInterPoint CloserPoint(List<IInterPoint> points )
         {
             double distanceMax = double.PositiveInfinity;
-            IInterPoint pointMin = null;
+            IInterPoint pointMin = new InterPoint();
             foreach (IInterPoint point in points)
             {
                 if (distanceMax > point.D)
@@ -43,16 +43,6 @@ namespace Model.implem
         public IInterPoint Compute(IRay ray)
         {
             return CloserPoint(GetHitBox().Collision(ray));
-        }
-
-        public IColor Compute(IScene scene, IRay ray, IInterPoint closerPoint)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IInterPoint Compute(IScene scene, IRay ray)
-        {
-            throw new NotImplementedException();
         }
 
         public IHitBox GetHitBox()

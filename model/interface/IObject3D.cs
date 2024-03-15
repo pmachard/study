@@ -11,11 +11,7 @@ namespace Model.@interface
         public string Name { get; set; }
         // recupere la hit box de l'objet 3D
         public IHitBox GetHitBox();
-
-        public IInterPoint Compute(IScene scene, IRay ray);
+        // Calcul l'intersection entre l'objet et un rayon 
         public IInterPoint Compute(IRay ray);
-
-        public IColor Compute(IScene scene, IRay ray, IInterPoint closerPoint);
-
     }
 }

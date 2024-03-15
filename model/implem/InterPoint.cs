@@ -13,6 +13,7 @@ namespace Model.implem
             D = 0.0;
             WithInter = false;
             ColorInter = new Color(0.0, 0.0, 0.0);
+            ObjectInter = null;
         }
 
         // Point résultat de l'intersection
@@ -27,6 +28,5 @@ namespace Model.implem
         public IObject3D ObjectInter { get; set; }
         // Coulor calculé sur l'intersection
         public IColor ColorInter { get; set; }
-
     }
 }
