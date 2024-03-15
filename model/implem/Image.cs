@@ -20,5 +20,12 @@ namespace Model.implem
         {
             _image[xImage, yImage] = color;
         }
+
+        public void set(IColor color)
+        {
+            for (int x = 0; x < L; x++)
+                for (int y = 0; y < H; y++)
+                    set(x, y, color);
+        }
     }
 }

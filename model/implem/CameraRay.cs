@@ -43,7 +43,9 @@ namespace Model.implem
 
         public IImage InitImage()
         {
-            return new Image((int)(L / DeltaL), (int)(H / DeltaH));
+            IImage imageResult = new Image((int)(L / DeltaL), (int)(H / DeltaH));
+            imageResult.set(new Color(1.0, 0.0, 0.0));
+            return imageResult;
         }
     }
 }

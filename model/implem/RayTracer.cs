@@ -31,8 +31,10 @@ namespace Model.implem
 
         public IImage Compute(IScene scene)
         {
+            // 
             IImage image = Camera.InitImage();
 
+            //
             for (   int x = (int)(-Camera.L / Camera.DeltaL / 2), xImage = 0; 
                     x < (int)(Camera.L / Camera.DeltaL / 2); 
                     x++, xImage++)

@@ -9,5 +9,6 @@ namespace Model.@interface
         public int H { get; set; }
 
         void set(int xImage, int yImage, IColor color);
+        void set(IColor color);
     }
 }
