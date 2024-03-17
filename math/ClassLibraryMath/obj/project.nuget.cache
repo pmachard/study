@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2EcM/0gf7X/lTnSrwGKEsMwIOqp0CInBUr96wDwR+5PUjBCj6iT52Q89psKeDVjE4nU+xVBlknofFforUjN5TA==",
+  "dgSpecHash": "UiJ8h10CFM3Nid4ODrpD/ZSis/Cep9h42K/QEqyGqAGQ3hwhcTAexSuljCEEjn1av3UPbY7THXURijwXEVZxUg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PascalMACHARD\\PycharmProjects\\study\\math\\ClassLibraryMath\\Math.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\PascalMACHARD\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.15\\microsoft.windowsdesktop.app.ref.7.0.15.nupkg.sha512",
-    "C:\\Users\\PascalMACHARD\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.15\\microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
-    "C:\\Users\\PascalMACHARD\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.15\\microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512"
-  ],
+  "projectFilePath": "/Users/pascalmachard/Projects/study/math/ClassLibraryMath/Math.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
