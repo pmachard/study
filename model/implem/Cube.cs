@@ -25,7 +25,7 @@ namespace Model.implem
         public string Name { get; set; }
         public double Size { get; set; }
 
-        public IInterPoint CloserPoint(List<IInterPoint> points )
+        public IInterPoint CloserPoint(List<IInterPoint> points)
         {
             double distanceMax = double.PositiveInfinity;
             IInterPoint pointMin = new InterPoint();
