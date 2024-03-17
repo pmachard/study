@@ -27,7 +27,7 @@ namespace Model.implem
         public ICoordSystem CS { get; set; }
         public string Name { get; set; }
 
-        public IPointCollision Compute(IRay ray)
+        public IInterPoint Compute(IRay ray)
         {
             throw new NotImplementedException();
         }
@@ -41,6 +41,5 @@ namespace Model.implem
         {
             CS.O = CS.O + v;
         }
-
     }
 }

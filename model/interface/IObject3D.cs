@@ -1,4 +1,5 @@
 using Math.@interface;
+using Model.nterface;
 
 namespace Model.@interface
 {
@@ -10,7 +11,7 @@ namespace Model.@interface
         public string Name { get; set; }
         // recupere la hit box de l'objet 3D
         public IHitBox GetHitBox();
-
-        public IPointCollision Compute(IRay ray);
+        // Calcul l'intersection entre l'objet et un rayon 
+        public IInterPoint Compute(IRay ray);
     }
 }

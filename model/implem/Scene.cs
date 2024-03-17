@@ -1,7 +1,6 @@
 ﻿using Math.@interface;
 using Math.implem;
 using Model.@interface;
-using Model.nterface;
 
 namespace Model.implem
 {
@@ -41,12 +40,11 @@ namespace Model.implem
 
         public IEnumerator<IObject3D> GetEnumerator()
         {
-            if (_objects == null)
-                yield return null;
-
-            foreach(IObject3D object3D in _objects)
-            {  yield return object3D; 
-            }
+            if (_objects != null)
+                foreach (IObject3D object3D in _objects)
+                {  yield return object3D; 
+                }
+            yield return null;
         }
     }
 }

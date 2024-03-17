@@ -1,6 +1,7 @@
 using Math.@interface;
 using Math.implem;
 using Model.@interface;
+using Model.nterface;
 
 namespace Model.implem
 {
@@ -24,9 +25,24 @@ namespace Model.implem
         public string Name { get; set; }
         public double Size { get; set; }
 
-        public IPointCollision Compute(IRay ray)
+        public IInterPoint CloserPoint(List<IInterPoint> points )
         {
-            throw new NotImplementedException();
+            double distanceMax = double.PositiveInfinity;
+            IInterPoint pointMin = new InterPoint();
+            foreach (IInterPoint point in points)
+            {
+                if (distanceMax > point.D)
+                {
+                    distanceMax = point.D;
+                    pointMin = point;
+                }
+            }
+            return pointMin;
+        }
+
+        public IInterPoint Compute(IRay ray)
+        {
+            return CloserPoint(GetHitBox().Collision(ray));
         }
 
         public IHitBox GetHitBox()

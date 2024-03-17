@@ -112,8 +112,17 @@ namespace ModelTests
         [TestMethod]
         public void TestCompute()
         {
+
+            _raytracer.CS = new CoordSystem(
+                new Coord3D(0.0, 0.0, 15.0),
+                new Coord3D(1.0, 0.0, 0.0),
+                new Coord3D(0.0, 1.0, 0.0),
+                new Coord3D(0.0, 0.0, 1.0)
+                );
+
+
             _raytracer.Camera.CS = new CoordSystem(
-                new Coord3D(0.0, 0.0, 10.0),
+                new Coord3D(0.0, 0.0, 5.0),
                 new Coord3D(1.0, 0.0, 0.0),
                 new Coord3D(0.0, 1.0, 0.0),
                 new Coord3D(0.0, 0.0, 1.0)
