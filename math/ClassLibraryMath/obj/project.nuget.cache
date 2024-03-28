@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "mLeB5LFi4P7/bDLMmRgWofkT383JO4wKNs1v/fLpAiBnn34kry55qlnOaUEmu55PlQvhc05q9+lSrYXzLdaYFA==",
+  "dgSpecHash": "nnSxdzr2jAtNNwwFvNxNpaLXFnWmNbfiHP146KXs9AjlCrhc4P7c/xEfXBRcs8+mjr92n5+Tw9Qn+Cdy+NxpXQ==",
   "success": true,
   "projectFilePath": "/Users/pascalmachard/Projects/study/math/ClassLibraryMath/Math.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/pascalmachard/.nuget/packages/microsoft.win32.systemevents/8.0.0/microsoft.win32.systemevents.8.0.0.nupkg.sha512",
+    "/Users/pascalmachard/.nuget/packages/system.drawing.common/8.0.3/system.drawing.common.8.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

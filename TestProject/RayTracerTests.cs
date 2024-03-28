@@ -130,8 +130,8 @@ namespace ModelTests
 
             _raytracer.Camera.L = 2.0;
             _raytracer.Camera.H = 1.0;
-            _raytracer.Camera.NbrPointL = 20;
-            _raytracer.Camera.NbrPointH = 10;
+            _raytracer.Camera.NbrPointL = 200;
+            _raytracer.Camera.NbrPointH = 100;
 
             IScene scene = new Scene();
 
@@ -139,6 +139,8 @@ namespace ModelTests
 
             IImage image = _raytracer.Compute(scene);
             Assert.IsNotNull(image);
+
+            image.save("TestCompute.png");
         }
     }
 }
