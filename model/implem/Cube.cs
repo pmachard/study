@@ -12,6 +12,7 @@ namespace Model.implem
             CS = new CoordSystem();
             Name = name;
             Size = 1.0;
+            Mat = new Material();
         }
 
         public Cube(ICoordSystem coordSystem, string name,double size)
@@ -19,11 +20,13 @@ namespace Model.implem
             CS = coordSystem;
             Name = name;
             Size = size;
-        }
+            Mat = new Material();
+            }
 
         public ICoordSystem CS { get; set; }
         public string Name { get; set; }
         public double Size { get; set; }
+        public IMaterial Mat { get ; set ; }
 
         public IInterPoint CloserPoint(List<IInterPoint> points)
         {

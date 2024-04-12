@@ -112,7 +112,6 @@ namespace ModelTests
         [TestMethod]
         public void TestCompute()
         {
-
             _raytracer.CS = new CoordSystem(
                 new Coord3D(0.0, 0.0, 15.0),
                 new Coord3D(1.0, 0.0, 0.0),
@@ -128,14 +127,25 @@ namespace ModelTests
                 new Coord3D(0.0, 0.0, 1.0)
                 );
 
+            _raytracer.Light = new Light();
+            _raytracer.Light.CS = new CoordSystem(
+                new Coord3D(0.0, 5.0, 5.0),
+                new Coord3D(1.0, 0.0, 0.0),
+                new Coord3D(0.0, 1.0, 0.0),
+                new Coord3D(0.0, 0.0, 1.0)
+                );
+            _raytracer.Light.Color = new Color(1.0, 1.0, 1.0);
+            _raytracer.Light.V = new Coord3D(1.0, 1.0, 1.0);
+
+
             _raytracer.Camera.L = 2.0;
-            _raytracer.Camera.H = 1.0;
-            _raytracer.Camera.NbrPointL = 200;
-            _raytracer.Camera.NbrPointH = 100;
+            _raytracer.Camera.H = 2.0;
+            _raytracer.Camera.NbrPointL = 400;
+            _raytracer.Camera.NbrPointH = 400;
 
             IScene scene = new Scene();
 
-            scene.AddObject(new Cube());
+            scene.AddObject(new Sphere());
 
             IImage image = _raytracer.Compute(scene);
             Assert.IsNotNull(image);

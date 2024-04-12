@@ -3,6 +3,8 @@ using Math.implem;
 using Model.@interface;
 using System.Drawing;
 using Model.nterface;
+using Model.implem;
+using System;
 
 namespace Model.implem
 {
@@ -14,6 +16,7 @@ namespace Model.implem
             Radius = 1.0;
             Height = 1.0;
             Name = name;
+            Mat = new Material();
         }
         public Cylinder(ICoordSystem localCoordSystem, string name, double radius, double height)
         {
@@ -21,12 +24,14 @@ namespace Model.implem
             Radius = radius;
             Height = height;
             Name = name;
+            Mat = new Material();
         }
 
         public double Radius { get; set; }
         public double Height { get; set; }
         public ICoordSystem CS { get; set; }
         public string Name { get; set; }
+        public IMaterial Mat { get ; set ; }
 
         public IInterPoint Compute(IRay ray)
         {

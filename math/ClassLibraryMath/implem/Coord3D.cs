@@ -134,5 +134,9 @@ namespace Math.implem
             return System.Math.Sqrt(X * X + Y * Y + Z * Z);
         }
 
+        public ICoord3D Pow(double v)
+        {
+            return new Coord3D (System.Math.Pow(X,v), System.Math.Pow(Y, v), System.Math.Pow(Z, v));
+        }
     };
 }

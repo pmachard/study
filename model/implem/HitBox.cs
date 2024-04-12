@@ -2,6 +2,7 @@ using Math.@interface;
 using Math.implem;
 using Model.@interface;
 using Model.nterface;
+using System;
 
 namespace Model.implem
 {
@@ -13,6 +14,7 @@ namespace Model.implem
             L = W = H = 1.0;
             CS = new CoordSystem();
             Name = "";
+            Mat = new Material();
         }
 
         public HitBox(ICoordSystem cs, double l, double h, double w)
@@ -23,6 +25,7 @@ namespace Model.implem
 
             CS = cs;
             Name = "";
+            Mat = new Material();
         }
 
         public double L { get; set; }
@@ -30,6 +33,8 @@ namespace Model.implem
         public double H { get; set; }
         public ICoordSystem CS { get; set; }
         public string Name { get; set; }
+        public IMaterial Mat { get; set; }
+
 
         public void RunTranlation(ICoord3D v)
         {
@@ -117,10 +122,10 @@ namespace Model.implem
         {
             IInterPoint pointInter = new InterPoint();
 
-            // Récupére les point de la facette
+            // Rï¿½cupï¿½re les point de la facette
             List<ICoord3D> pointsFacette = GetFacette(pos);
 
-            // Calcul le vecteur normal à la facette
+            // Calcul le vecteur normal ï¿½ la facette
             ICoord3D u = pointsFacette[1] - pointsFacette[0];
             ICoord3D v = pointsFacette[3] - pointsFacette[0];
             ICoord3D w = u & v;
@@ -134,7 +139,7 @@ namespace Model.implem
             // y = ray.O.Y + ray.V.Y * t
             // z = ray.O.Z + ray.V.Z * t
 
-            // Resolution de l'équation
+            // Resolution de l'ï¿½quation
             // w.x * (ray.O.X + ray.V.X * t-o.x) + w.y * (ray.O.Y + ray.V.Y * t-o.x) + w.z * (ray.O.Z + ray.V.Z * t-o.z)  = 0
             //
             // double d = (w.X * ray.V.X + w.Y * ray.V.Y + w.Z * ray.V.Z);
@@ -148,10 +153,10 @@ namespace Model.implem
                     ray.O.Y + ray.V.Y * t,
                     ray.O.Z + ray.V.Z * t);
 
-                // Il faut maintenant vérifier que le point est bien a l'interieur de la facette
+                // Il faut maintenant vï¿½rifier que le point est bien a l'interieur de la facette
 
-                // On se trouve dans le repére local
-                // IL suffit donc véfirier les coordonné avec la valeurs min et max
+                // On se trouve dans le repï¿½re local
+                // IL suffit donc vï¿½firier les coordonnï¿½ avec la valeurs min et max
                 // Attention c'est une grosse approximation mais cela fonction 
                 if ((point.X < -L/2.0) || (point.X > L/2.0))
                     pointInter.WithInter = false;

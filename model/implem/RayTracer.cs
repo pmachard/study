@@ -3,6 +3,7 @@ using Math.implem;
 using Model.@interface;
 using System.Drawing;
 using Model.nterface;
+using System.Collections.Generic;
 
 namespace Model.implem
 {
@@ -13,18 +14,19 @@ namespace Model.implem
         {
             CS = new CoordSystem();
             Camera = new CameraRay();
+            Light = new Light();
         }
 
         public ICoordSystem CS { get; set; }
         public ICameraRay Camera { get; set; }
+        public ILight Light { get; set; }
 
         public IRay ComputeRay(int x, int y)
         {
             if (!Camera.CheckCoord(x, y))
                 throw new ArgumentException();
 
-            ICoord3D coord = Camera.GetCoord(x, y);
-            ICoord3D vect = coord - CS.O;           
+            ICoord3D vect = Camera.GetCoord(x, y) - CS.O;           
 
             return new Ray(CS.O, vect);     
         }
@@ -72,6 +74,7 @@ namespace Model.implem
             return pointMin;
         }
 
+
         public IColor Compute(IScene scene,IRay ray)
         {
             IColor colorResult = new Color(1.0,0.0,0.0);
@@ -92,18 +95,66 @@ namespace Model.implem
                 if (pointsInter.Count() == 0)
                     continue;
 
-                allPointsInter.AddRange(pointsInter);
+                // Il y a potentiellement un objet en collision avec le rayon
+                // Calcul le point de collision exacte avec la distance et la normal (normal pour un gain de temps par la suite) 
+                IInterPoint pointInterReal = object3D.Compute(ray);
+                if (pointInterReal.WithInter == true)
+                    allPointsInter.Add(pointInterReal);
             }
             if (allPointsInter.Count()>0)
             {
-                // Il y a potentiellement un objet en collision avec le rayon
-                // Calcul le point de collision exacte avec la distance et la normal (normal pour un gain de temps par la suite) 
+                // recupére le point d'intersection le plus proche 
                 IInterPoint closerPoint = CloserPoint(allPointsInter);
-                colorResult = closerPoint.ColorInter;
-            }
 
+                IObject3D obj = closerPoint.ObjectInter;
+                IMaterial mat = obj.Mat;
+                IColor col = mat.C;
+                ICoord3D n = closerPoint.N;
+                ICoord3D l = Light.V;
+
+                if (IsLight(scene, closerPoint.R, Light.CS.O))
+                {
+                    double scal = 1.0 - (l ^ n);
+                    closerPoint.ColorInter = new Color(col.R * scal, col.V * scal, col.B * scal);
+                    colorResult = closerPoint.ColorInter;
+                }
+                else
+                {
+                    // Il y a un obtacle entre la lumiere et le point
+                }
+
+            }
             // Recherche le point le plus proche dans la liste des collisions
             return colorResult;
         }
+
+        public Boolean IsLight(IScene scene, ICoord3D r, ICoord3D o)
+        {
+            List<IInterPoint> allPointsInter = new List<IInterPoint>();
+
+            IRay ray = new Ray(o,(r-o));
+
+            foreach (IObject3D object3D in scene)
+            {
+                if (object3D == null)
+                    continue;
+
+                // Recup�re la hitbox pour faire un premier test de collision avec l'objet
+                IHitBox hitBox = object3D.GetHitBox();
+                if (hitBox == null)
+                    continue;
+
+                List<IInterPoint> pointsInter = hitBox.Collision(ray);
+                if (pointsInter.Count() == 0)
+                    continue;
+
+                // Il y a potentiellement un objet en collision avec le rayon
+                // Calcul le point de collision exacte avec la distance et la normal (normal pour un gain de temps par la suite) 
+                IInterPoint pointInterReal = object3D.Compute(ray);
+                if (pointInterReal.WithInter == true)
+                    allPointsInter.Add(pointInterReal);
+            }
+            return (allPointsInter.Count()<=1);
+        }
     }
- }
+}

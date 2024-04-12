@@ -52,6 +52,8 @@ namespace Math.@interface
         // cacul de la norme du vecteur ayant ses coordonnées 
         public double Norme();
 
+        public ICoord3D Pow(double v);
+
     }
 
 }
