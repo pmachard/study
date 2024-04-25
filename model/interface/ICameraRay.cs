@@ -6,7 +6,7 @@ namespace Model.@interface
     public interface ICameraRay
     {
         // repére origine du de la camera du lancer de rayon
-        public ICoordSystem CS { get; set; }
+        public ICoord3D Pos { get; set; }
         public double H { get; set; }
         public double L { get; set; }
         public double DeltaH { get; }

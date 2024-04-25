@@ -19,11 +19,8 @@ namespace ModelTests
             Assert.AreEqual(sphere.Name, "S1");
             Assert.AreEqual(sphere.Radius, 1.0);
 
-            ICoordSystem cs = sphere.CS;
-            Assert.AreEqual(cs.O, new Coord3D(0.0, 0.0, 0.0));
-            Assert.AreEqual(cs.I, new Coord3D(1.0, 0.0, 0.0));
-            Assert.AreEqual(cs.J, new Coord3D(0.0, 1.0, 0.0));
-            Assert.AreEqual(cs.K, new Coord3D(0.0, 0.0, 1.0));
+            ICoord3D pos = sphere.Pos;
+            Assert.AreEqual(pos, new Coord3D(0.0, 0.0, 0.0));
 
             IHitBox hitBox = sphere.GetHitBox();
             Assert.AreEqual(hitBox.L, 1.0);

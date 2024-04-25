@@ -9,21 +9,21 @@ namespace Model.implem
     {
         public Cube(string name="")
         {
-            CS = new CoordSystem();
+            Pos = new Coord3D();
             Name = name;
             Size = 1.0;
             Mat = new Material();
         }
 
-        public Cube(ICoordSystem coordSystem, string name,double size)
+        public Cube(ICoord3D coord3D, string name,double size)
         {
-            CS = coordSystem;
+            Pos = coord3D;
             Name = name;
             Size = size;
             Mat = new Material();
             }
 
-        public ICoordSystem CS { get; set; }
+        public ICoord3D Pos { get; set; }
         public string Name { get; set; }
         public double Size { get; set; }
         public IMaterial Mat { get ; set ; }
@@ -50,12 +50,12 @@ namespace Model.implem
 
         public IHitBox GetHitBox()
         {
-            return new HitBox(CS, Size, Size, Size);
+            return new HitBox(Pos, Size, Size, Size);
         }
 
         public void RunTranlation(ICoord3D v)
         {
-            CS.O = CS.O + v;
+            Pos = Pos + v;
         }
     }
 }

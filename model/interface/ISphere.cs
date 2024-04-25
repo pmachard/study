@@ -1,7 +1,7 @@
 using Math.@interface;
 using Model.@interface;
 
-namespace Model.@nterface
+namespace Model.@interface
 {
     public interface ISphere : IObject3D
     {

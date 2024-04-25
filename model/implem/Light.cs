@@ -9,13 +9,10 @@ namespace Model.implem
     {
         public Light()
         {
-            CS = new CoordSystem();
             Color = new Color(1.0,1.0,1.0);
             V = new Coord3D(1.0, 1.0, 1.0);
         }
 
-        // repére origine de la lumiere
-        public ICoordSystem CS { get; set; }
         // Couleur de la lumiere
         public IColor Color { get; set; }
         // vecteur directeur de la lumiere

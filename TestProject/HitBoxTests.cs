@@ -3,7 +3,6 @@ using Math.implem;
 using Math.@interface;
 using Model.implem;
 using Model.@interface;
-using Model.nterface;
 
 
 namespace ModelTests
@@ -17,7 +16,7 @@ namespace ModelTests
         {
             IHitBox hitBox = new HitBox();
 
-            Assert.AreEqual(hitBox.CS, new CoordSystem());
+            Assert.AreEqual(hitBox.Pos, new Coord3D());
             Assert.AreEqual(hitBox.L, 1.0);
             Assert.AreEqual(hitBox.W, 1.0);
             Assert.AreEqual(hitBox.H, 1.0);
@@ -26,10 +25,10 @@ namespace ModelTests
         [TestMethod]
         public void TestCreateWithValues()
         {
-            ICoordSystem cs = new CoordSystem();
-            IHitBox hitBox = new HitBox(cs,2.0,4.0,8.0);
+            ICoord3D pos = new Coord3D();
+            IHitBox hitBox = new HitBox(pos,2.0,4.0,8.0);
 
-            Assert.AreEqual(hitBox.CS, cs);
+            Assert.AreEqual(hitBox.Pos, pos);
             Assert.AreEqual(hitBox.L, 2.0);
             Assert.AreEqual(hitBox.H, 4.0);
             Assert.AreEqual(hitBox.W, 8.0);
@@ -38,8 +37,8 @@ namespace ModelTests
         [TestMethod]
         public void TestGetPointLocal()
         {
-            ICoordSystem cs = new CoordSystem();
-            IHitBox hitBox = new HitBox(cs, 2.0, 4.0, 8.0);
+            ICoord3D pos = new Coord3D();
+            IHitBox hitBox = new HitBox(pos, 2.0, 4.0, 8.0);
 
             List<ICoord3D> points = hitBox.GetPtsLocal();
 
@@ -60,10 +59,9 @@ namespace ModelTests
         public void TestGetPointAbsolute01()
         {
             ICoord3D o = new Coord3D(10.0, 20.0, 30.0);
-            ICoordSystem cs = new CoordSystem();
-            cs.RunTranlation(o);
+            ICoord3D pos = new Coord3D();
 
-            IHitBox hitBox = new HitBox(cs, 2.0, 4.0, 8.0);
+            IHitBox hitBox = new HitBox(pos, 2.0, 4.0, 8.0);
 
 
             List<ICoord3D> points = hitBox.GetPtsAbsolute();
@@ -84,8 +82,8 @@ namespace ModelTests
         [TestMethod]
         public void TestGetFacette1()
         {
-            ICoordSystem cs = new CoordSystem();
-            IHitBox hitBox = new HitBox(cs, 2.0, 4.0, 8.0);
+            ICoord3D pos = new Coord3D();
+            IHitBox hitBox = new HitBox(pos, 2.0, 4.0, 8.0);
 
             List<ICoord3D> points = hitBox.GetFacette(0);
             Assert.AreEqual(points.Count(), 4);
@@ -133,8 +131,8 @@ namespace ModelTests
         [TestMethod]
         public void TestGetPointColision1()
         {
-            ICoordSystem cs = new CoordSystem();
-            IHitBox hitBox = new HitBox(cs, 2.0, 2.0, 2.0);
+            ICoord3D pos = new Coord3D();
+            IHitBox hitBox = new HitBox(pos, 2.0, 2.0, 2.0);
 
             IRay ray = new Ray( new Coord3D(0.0, 0.0, 0.0), new Coord3D(0.0, 0.0, 1.0));
 
@@ -149,8 +147,8 @@ namespace ModelTests
         [TestMethod]
         public void TestGetPointColision2()
         {
-            ICoordSystem cs = new CoordSystem();
-            IHitBox hitBox = new HitBox(cs, 2.0, 2.0, 2.0);
+            ICoord3D pos = new Coord3D();
+            IHitBox hitBox = new HitBox(pos, 2.0, 2.0, 2.0);
 
             IRay ray = new Ray( new Coord3D(0.5, 0.5, 0.5), new Coord3D(0.0, 0.0, 1.0));
 
@@ -165,13 +163,8 @@ namespace ModelTests
         [TestMethod]
         public void TestGetPointColision3()
         {
-            ICoordSystem cs = new CoordSystem(
-                new Coord3D(10.0, 0.0, 0.0),
-                new Coord3D(1.0, 0.0, 0.0),
-                new Coord3D(0.0, 1.0, 0.0),
-                new Coord3D(0.0, 0.0, 1.0)
-                );
-            IHitBox hitBox = new HitBox(cs, 2.0, 2.0, 2.0);
+            ICoord3D pos = new Coord3D();
+            IHitBox hitBox = new HitBox(pos, 2.0, 2.0, 2.0);
 
             IRay ray = new Ray( new Coord3D(0.0, 0.0, 0.0), new Coord3D(0.0, 0.0, 1.0));
 
@@ -186,7 +179,7 @@ namespace ModelTests
         [TestMethod]
         public void TestGetPointColision4()
         {
-            IHitBox hitBox = new HitBox(new CoordSystem(), 2.0, 2.0, 2.0);
+            IHitBox hitBox = new HitBox(new Coord3D(), 2.0, 2.0, 2.0);
 
             IRay ray = new Ray( new Coord3D(0.0, 0.0, -2.0), new Coord3D(0.0, 1.0, 1.0));
 
@@ -215,7 +208,7 @@ namespace ModelTests
         public void TestGetPointColision5()
         {
             // Test la colition entre une box 2*2*2 et un rayon qui intersect une arrete
-            IHitBox hitBox = new HitBox(new CoordSystem(), 2.0, 2.0, 2.0);
+            IHitBox hitBox = new HitBox(new Coord3D(), 2.0, 2.0, 2.0);
 
             IRay ray = new Ray( new Coord3D(0.0, 0.0, -2.0), new Coord3D(0.0, 0.5, 1.0));
 
@@ -238,7 +231,7 @@ namespace ModelTests
         public void TestGetPointColision6()
         {
             // Test avec une box de 2*2*2 et un rayon qui correspond a une arrete 
-            IHitBox hitBox = new HitBox(new CoordSystem(), 2.0, 2.0, 2.0);
+            IHitBox hitBox = new HitBox(new Coord3D(), 2.0, 2.0, 2.0);
 
             IRay ray = new Ray(new Coord3D(1.0, 1.0, -2.0), new Coord3D(0.0, 0.0, 1.0));
 
@@ -266,7 +259,7 @@ namespace ModelTests
         public void TestGetPointColision7()
         {
             // Test la colition entre une box 2*2*2 et un rayon diagonal 0.25,0.25,1.0
-            IHitBox hitBox = new HitBox(new CoordSystem(), 2.0, 2.0, 2.0);
+            IHitBox hitBox = new HitBox(new Coord3D(), 2.0, 2.0, 2.0);
 
             IRay ray = new Ray(new Coord3D(0.0, 0.0, -2.0), new Coord3D(0.25, 0.25, 1.0));
 

@@ -8,7 +8,7 @@ namespace Model.@interface
     public interface IRayTracer 
     {
         // Origine du lancer de rayon
-        public ICoordSystem CS { get; set; }
+        public ICoord3D Pos { get; set; }
         // Camera utilisé pour le lancer de rayon
         public ICameraRay Camera { get; set; }
 

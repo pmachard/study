@@ -12,18 +12,18 @@ namespace Model.implem
         public HitBox()
         {
             L = W = H = 1.0;
-            CS = new CoordSystem();
+            Pos = new Coord3D();
             Name = "";
             Mat = new Material();
         }
 
-        public HitBox(ICoordSystem cs, double l, double h, double w)
+        public HitBox(ICoord3D pos, double l, double h, double w)
         {
             L = l;
             H = h;
             W = w;
 
-            CS = cs;
+            Pos = pos;
             Name = "";
             Mat = new Material();
         }
@@ -31,7 +31,7 @@ namespace Model.implem
         public double L { get; set; }
         public double W { get; set; }
         public double H { get; set; }
-        public ICoordSystem CS { get; set; }
+        public ICoord3D Pos { get; set; }
         public string Name { get; set; }
         public IMaterial Mat { get; set; }
 
@@ -61,9 +61,14 @@ namespace Model.implem
         public List<ICoord3D> GetPtsAbsolute()
         {
             List<ICoord3D> points = GetPtsLocal();
+            List<ICoord3D> result = new List<ICoord3D>();
 
-            points = CS.Transform(points);
-            return points;
+            foreach (ICoord3D point in points)
+            {
+                result.Append(Pos + point);
+            }
+
+            return result;
         }
 
         public List<ICoord3D> GetFacette(int NumFacette)

@@ -11,22 +11,22 @@ namespace Model.implem
     {
         public Sphere(string name="")
         {
-            CS = new CoordSystem();
+            Pos = new Coord3D();
             Radius = 0.5;
             Name = name;
             Mat = new Material();
         }
 
-        public Sphere(ICoordSystem cs, string name, double r)
+        public Sphere(ICoord3D pos, string name, double r)
         {
-            CS = cs;
+            Pos = pos;
             Radius = r;
             Name = name;
             Mat = new Material();
         }
 
         public double Radius { get; set; }
-        public ICoordSystem CS { get; set; }
+        public ICoord3D Pos { get; set; }
         public string Name { get; set; }
         public IMaterial Mat { get; set; }
 
@@ -77,7 +77,7 @@ namespace Model.implem
             // c = (ray.O.x - CS.O.x)^2 + (ray.O.y - CS.O.y)^2 + (ray.O.z - CS.O.z)^2 - Radius^2
 
             ICoord3D ray_v2 = ray.V.Pow(2);
-            ICoord3D ray_cs = ray.O - CS.O;
+            ICoord3D ray_cs = ray.O - Pos;
             ICoord3D ray_cs2 = ray_cs.Pow(2);
 
             double a = ray_v2.X + ray_v2.Y + ray_v2.Z;
@@ -95,7 +95,8 @@ namespace Model.implem
                 pointInter.ColorInter = new Color(0, 0, 0);
                 pointInter.WithInter = true;
                 pointInter.R = p;
-                pointInter.N = CS.O - p;
+                pointInter.N = Pos - p;
+                pointInter.D = (p - ray.O).Norme();
                 pointInter.ObjectInter = this;
                 pointsInter.Add(pointInter);
 
@@ -106,7 +107,8 @@ namespace Model.implem
                 pointInter.ColorInter = new Color(0, 0, 0);
                 pointInter.WithInter = true;
                 pointInter.R = p;
-                pointInter.N = CS.O - p;
+                pointInter.N = Pos - p;
+                pointInter.D = (p - ray.O).Norme();
                 pointInter.ObjectInter = this;
                 pointsInter.Add(pointInter);
             }
@@ -119,6 +121,8 @@ namespace Model.implem
                 pointInter.ColorInter = new Color(0, 0, 0);
                 pointInter.WithInter = true;
                 pointInter.R = p;
+                pointInter.N = Pos - p;
+                pointInter.D = (p - ray.O).Norme(); 
                 pointsInter.Add(pointInter);
             }
             else
@@ -131,12 +135,12 @@ namespace Model.implem
 
         public IHitBox GetHitBox()
         {
-            return new HitBox(CS, Radius * 2.0, Radius * 2.0, Radius * 2.0);
+            return new HitBox(Pos, Radius * 2.0, Radius * 2.0, Radius * 2.0);
         }
 
         public void RunTranlation(ICoord3D v)
         {
-            CS.O = CS.O + v;
+            Pos = Pos + v;
         }
     }
 }

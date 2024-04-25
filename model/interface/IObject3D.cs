@@ -6,8 +6,7 @@ namespace Model.@interface
 {
     public interface IObject3D : ITranslatable
     {
-        // repere local de l'object 3d
-        public ICoordSystem CS { get; set; }
+        public ICoord3D Pos { get; set; }
         // nom de l'objet 3d
         public string Name { get; set; }
         public IMaterial Mat  { get; set; }

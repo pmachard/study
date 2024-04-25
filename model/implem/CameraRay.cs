@@ -8,12 +8,12 @@ namespace Model.implem
     {
         public CameraRay()
         {
-            CS = new CoordSystem();
+            Pos = new Coord3D();
             H = 1.0;
             L = 1.0;
         }
 
-        public ICoordSystem CS { get; set; }
+        public ICoord3D Pos { get; set; }
         public double H { get; set; }
         public double L { get; set; }
         public int NbrPointH { get; set; }
@@ -38,7 +38,7 @@ namespace Model.implem
             if (!CheckCoord(x, y))
                 throw new ArgumentException();
 
-            return CS.O + (CS.I * DeltaL * (double)x) + (CS.J * DeltaH * (double)y);
+            return new Coord3D(Pos.X + DeltaL * (double)x, Pos.Y + DeltaH * (double)y, Pos.Z);
         }
 
         public IImage InitImage()

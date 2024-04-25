@@ -12,12 +12,12 @@ namespace Model.implem
     {
         public RayTracer()
         {
-            CS = new CoordSystem();
+            Pos = new Coord3D();
             Camera = new CameraRay();
             Light = new Light();
         }
 
-        public ICoordSystem CS { get; set; }
+        public ICoord3D Pos { get; set; }
         public ICameraRay Camera { get; set; }
         public ILight Light { get; set; }
 
@@ -26,9 +26,9 @@ namespace Model.implem
             if (!Camera.CheckCoord(x, y))
                 throw new ArgumentException();
 
-            ICoord3D vect = Camera.GetCoord(x, y) - CS.O;           
+            ICoord3D vect = Camera.GetCoord(x, y) - Pos;           
 
-            return new Ray(CS.O, vect);     
+            return new Ray(Pos, vect);     
         }
 
         public IImage Compute(IScene scene)
@@ -75,10 +75,8 @@ namespace Model.implem
         }
 
 
-        public IColor Compute(IScene scene,IRay ray)
+        public List<IInterPoint> ComputeInter(IScene scene, IRay ray)
         {
-            IColor colorResult = new Color(1.0,0.0,0.0);
-
             List<IInterPoint> allPointsInter = new List<IInterPoint>();
 
             foreach (IObject3D object3D in scene)
@@ -101,6 +99,15 @@ namespace Model.implem
                 if (pointInterReal.WithInter == true)
                     allPointsInter.Add(pointInterReal);
             }
+            return allPointsInter;
+        }
+
+        public IColor Compute(IScene scene,IRay ray)
+        {
+            IColor colorResult = new Color(1.0,0.0,0.0);
+
+            List<IInterPoint> allPointsInter = ComputeInter(scene, ray);
+
             if (allPointsInter.Count()>0)
             {
                 // recupére le point d'intersection le plus proche 
@@ -112,49 +119,21 @@ namespace Model.implem
                 ICoord3D n = closerPoint.N;
                 ICoord3D l = Light.V;
 
-                if (IsLight(scene, closerPoint.R, Light.CS.O))
+                double scal = l ^ n;
+
+                if (scal>0.0)
                 {
-                    double scal = 1.0 - (l ^ n);
                     closerPoint.ColorInter = new Color(col.R * scal, col.V * scal, col.B * scal);
                     colorResult = closerPoint.ColorInter;
                 }
                 else
                 {
-                    // Il y a un obtacle entre la lumiere et le point
+                    closerPoint.ColorInter = new Color(0.0,0.0,0.0);
+                    colorResult = closerPoint.ColorInter;
                 }
-
             }
             // Recherche le point le plus proche dans la liste des collisions
             return colorResult;
-        }
-
-        public Boolean IsLight(IScene scene, ICoord3D r, ICoord3D o)
-        {
-            List<IInterPoint> allPointsInter = new List<IInterPoint>();
-
-            IRay ray = new Ray(o,(r-o));
-
-            foreach (IObject3D object3D in scene)
-            {
-                if (object3D == null)
-                    continue;
-
-                // Recup�re la hitbox pour faire un premier test de collision avec l'objet
-                IHitBox hitBox = object3D.GetHitBox();
-                if (hitBox == null)
-                    continue;
-
-                List<IInterPoint> pointsInter = hitBox.Collision(ray);
-                if (pointsInter.Count() == 0)
-                    continue;
-
-                // Il y a potentiellement un objet en collision avec le rayon
-                // Calcul le point de collision exacte avec la distance et la normal (normal pour un gain de temps par la suite) 
-                IInterPoint pointInterReal = object3D.Compute(ray);
-                if (pointInterReal.WithInter == true)
-                    allPointsInter.Add(pointInterReal);
-            }
-            return (allPointsInter.Count()<=1);
         }
     }
 }

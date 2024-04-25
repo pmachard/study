@@ -31,10 +31,7 @@ namespace Model.implem
                     for (int x = 0; x < L; x++)
                     {
                         IColor currentColor = _image[x, y];
-                        byte r = (byte)(currentColor.R * 255.0);
-                        byte v = (byte)(currentColor.V * 255.0);
-                        byte b = (byte)(currentColor.B * 255.0);
-                        canvas.DrawPoint(x, y, new SKColor(r,v,b));
+                        canvas.DrawPoint(x, y, new SKColor(currentColor.r, currentColor.v, currentColor.b));
                     }
                 }
 
