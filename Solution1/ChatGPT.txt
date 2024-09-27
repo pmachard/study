@@ -1,2 +1,0 @@
-> Calcul d'une intersection entre une droite et un plan dans l'espace
-> Calcul d'une intersection entre une droite et un plan dans l'espace avec des matrices
